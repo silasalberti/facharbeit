@@ -1,16 +1,36 @@
-\documentclass[a4paper,10pt,ngerman]{scrartcl}
+\documentclass[a4paper,12pt,ngerman]{scrartcl}
 \usepackage{babel}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage{csquotes}
 \MakeOuterQuote{"}
-%\usepackage[a4paper,margin=2.5cm]{geometry}
+\usepackage[a4paper,left=4cm,right=2cm,top=2.5cm,bottom=2.5cm]{geometry}
 
 \usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+
+\usepackage[shortlabels]{enumitem}
 
 \title{Die Heisenberg'sche Unschärferelation anhand von diskreten Wahrscheinlichkeitsverteilungen}
 \author{Silas Alberti}
 \date{Februar 2018}
+
+\theoremstyle{plain}
+\newtheorem{definition}{Definition}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Satz}
+
+% Line spacing
+\renewcommand{\baselinestretch}{1.5} 
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Cz}{\mathbb{C}_\mathbb{Z}}
+\newcommand{\T}{\mathbb{T}}
+\newcommand{\X}{\mathbb{X}}
+
 
 \begin{document}
 
@@ -18,23 +38,98 @@
 
 \tableofcontents
 
+% Suppressing line numbering of first page
+\thispagestyle{empty}
+\clearpage
+\setcounter{page}{1}
+
 \section{Einleitung}
 
 Dank der heutzutage weit fortgeschrittenen Displaytechnologie in Form von UHD-Auflösungen und 4K-Fernsehern vergisst man schon fast, dass auch die geradezu lebensecht darstellenden Monitore, das Bild dennoch aus einer Vielzahl an einzelnen Pixeln zusammensetzen. Dem entgegen stellt sich die sogenannte Pixel-Art, die gezielt niedrigere Auflösungen als Stilmittel verwendet. Dabei setzt der Pixel-Artist das Bild meist akribisch Pixel für Pixel zusammen ohne von den Vorteilen höherer Bearbeitungsebenen zu profitieren, die moderne Software bietet.
 
 % Bild: Pixel-Art, z.B. Künstler-Grupp eBoy%
 
-Sehr interessant sind die Einschränkungen, die diese Form der Bilderstellung dem Künstler schafft. So sind elementare Elemente wie gerade Linien nur parallel zu den Linien des Rasters und je nach Auffassung noch diagonal möglich. Erst recht problematisch wird es für komplexere Formen wie z.B. Kreise, die sich zwar mehr und mehr approximieren, aber tatsächlich nie perfekt umsetzen lassen. Die Pixel-Art-Szene hat aus dem Streben nach der bestmöglichen Approximation von Kreisen, Linien und ähnlichem bereits eine eigene Wissenschaft gemacht.
+Sehr interessant sind die Einschränkungen, die diese Form der Bilderstellung dem Künstler schafft. So sind grundlegende geometrische Formen wie gerade Linien nur parallel zu den Linien des Rasters möglich. Erst recht problematisch wird es für komplexere Formen wie z.B. Kreise, die sich zwar mehr und mehr approximieren, aber tatsächlich nie perfekt umsetzen lassen. In der Pixel-Art-Szene wurde aus dem Streben nach der bestmöglichen Approximation von Kreisen, Linien und ähnlichem bereits eine eigene Wissenschaft.
 
 % Bild: Kreis (oder Linien), ins Abbildungsverzeichnis? %
 
-In der Realität außerhalb er Computer-Bildschirme hingegen -- so könnte man sich im Angesicht dieser Unvollkommenheit zureden -- existieren solche Probleme nicht; man könne ja unendlich weit "reinzoomen" in unser Universum. Derartige Überlegungen finden ihren Höhepunkt z.B. in der Analysis, genauer in der Infinitesimalrechnung, die mathematische Sachverhalte bis in unendliche Genauigkeit darstellen können. 
+In der Realität außerhalb der Computer-Bildschirme hingegen -- so könnte man sich im Angesicht dieser Unvollkommenheit zureden -- existieren solche Probleme nicht; man könne ja unendlich weit "reinzoomen" in unser Universum. Derartige Überlegungen finden ihren Höhepunkt z.B. in der Analysis, genauer in der Infinitesimalrechnung, die mathematische Sachverhalte bis in unendliche Genauigkeit darstellen kann. 
 
-Der elementare Gegensatz sind hier die mathematische Begriffe \textit{diskret} und \textit{stetig} bzw. \text{kontinuierlich}. Ein Computer-Bildschirm der aus einer endlichen Anzahl an Pixeln besteht kann nur diskretes fassen, während unser Universum scheinbar auch kontinuierliche Größen fassen kann. Mathematisch präziser formuliert, betrachtet die 
+Der elementare Gegensatz sind hier die mathematische Begriffe \textit{diskret} und \textit{kontinuerlich}. Ein Computer-Bildschirm, der aus einer endlichen Anzahl an Pixeln besteht, kann nur diskretes fassen, während unser Universum (scheinbar) auch kontinuierliche Größen fassen kann. Mathematisch präziser formuliert, betrachtet die diskrete Mathematik nur endliche oder abzählbar unendliche Mengen, während die nicht-diskrete Mathematik (z.B. die Analysis) insbesondere eben auch überabzählbar unendliche Mengen wie die reellen Zahlen untersucht. So entstehen Konzepte wie die Stetigkeit einer Variable, die im Diskreten nicht existieren können.
 
-Als Albert Einstein gegen Anfang des 20. Jh. bisher unerklärbare Phänomene bei der Beobachtung des photoelektrischen Effekts auf ein Lichtquant zurückführte, heute auch Photon genannt.
+Bereits gegen Ende des 19. Jh. stellte sich jedoch heraus, dass bisher für kontinuierlich gehaltene physikalische Größen und Phänomene wie die Ladung oder das Licht aus diskreten Grundeinheiten, sogenannten \textit{quanta} bestehen (d.h. Elektronen im Fall von Ladung; Photonen im Fall von Licht). Im Zuge dessen entwickelte sich Anfang des 20. Jh. die Quantenphysik, welche Phänomene und Größen, die nur feste diskrete Werte annehmen können, untersucht. Letzteres wird auch als \textit{Quantelung} bezeichnet.
+
+Als Gründervater der Quantenphysik gilt der deutsche Physiker Max Planck (* 1858; \textdagger 1947), der erstmalig die Quantelung im Falle von Energie beschrieb. Nach ihm benannt ist auch die Planck-Länge
+\[ l_P \approx 1.616 229 \cdot 10^{-35}m,\]
+die der Anstoß für die in dieser Arbeit geführten Überlegungen ist. Der aktuellen -- noch nicht bewiesenen -- Theorie der Schleifenquantengravitation zufolge, die als die einzige weit entwickelte Alternative zur bekannteren String-Theorie gilt, ist nämlich das gesamte Universum durch die Planck-Länge quantisiert. Einfach dargestellt könnte man sagen, unser Universum bestehe aus Pixeln der Größe der Planck-Länge.
+
+Tatsächlich wäre es demnach nicht möglich in unserem Universum einen perfekten Kreis zu erschaffen. 
+
+Des Weiteren lässt sich die Planck-Zeit definieren
+\[t_P \approx 5.39116\cdot 10^{-44}s,\]
+die in der Schleifenquantengravitation die diskrete Grundeinheit der Zeit ist. Damit wäre sie im Kontext der eben bereits aufgefassten Computerbildschirm-Analogie mit der vergangenen Zeit zwischen zwei Frames z.B. eines digitalen Videos vergleichbar. 
+
+Ohne Anspruch auf physikalische Treffsicherheit spielt diese Arbeit mit dem Konzept von diskreten Raum- und Zeiteinheiten unter der Annahme, dass die nicht unterschritten werden können. Wir werden grundlegende Teilchenbewegungen modellieren mit dem Ziel herauszufinden, welche Implikationen diese Diskretheit nach sich zieht. 
+
+Ich möchte nochmals betonen, dass ich keinesfalls behaupte, von den physikalischen Details auch nur annähernd Ahnung zu haben -- die tatsächliche moderne Quantenphysik ist wesentlich komplexer. Es handelt sich hierbei um rein mathematische Überlegungen, die keinen Zusammenhang zu echten physikalischen Phänomenen anstreben. Das Ziel ist es sich dem Konzept des Diskreten zu Nähern und herauszufinden, was für Folgen dies unter anderem haben könnte. % Erster und letzter Satz überarbeiten %
+
+Im Laufe der Arbeit werde ich öfters Parallelen zu quantenphysikalischen Phänomenen ziehen, die eher als Anekdote zu sehen sind. %Ausführen%
+
+\subsection{Die Heisenberg'sche Unschärferelation}
+
+% Vorstellen %
+
+\[\sigma_x \sigma_p \geq \frac{\hbar}{2}\]
 
 \section{Hauptteil}
+
+Begeben wir uns also auf die tiefstmögliche Ebene. Im Zentrum der folgenden Überlegungen wird ein "Teilchen" der Größe einer Planck-Länge stehen. Dabei sei der Begriff als ein reines mathematisches Objekt zu verstehen, ohne direkte physikalische Interpretation.
+
+Im Folgenden werden wir die Konzepte \textit{Ort} und \textit{Zeit} benötigen. Bevor die deren Struktur konkretisieren, betrachten wir sie erstmal als abstrakte Konzepte.
+
+\begin{definition}\label{def_ortundzeit}
+\begin{enumerate}[(a)]
+\item Wir können eine Menge $\X$ als \textbf{diskreter Raum} bezeichnen, wenn sie maximal abzählbar unendlich ist, d.h. wenn
+\[ |\X| \leq \aleph_0,\]
+und wenn eine \textbf{Nachbarschaftsfunktion} $\delta: \X^2\rightarrow\{0,1\}$ existiert, so dass
+\[\forall\, x\in\X\quad\exists\, x_0\in\X: \quad\delta(x,x_0)=1.\]
+und
+\[\forall\, x_0,x_1\in\X: \quad\delta(x_0,x_1)=\delta(x_1,x_0).\]
+Ein $x\in\X$ bezeichnen wir als \textbf{Position}. Wenn für $x_0,x_1\in\X$ gilt, dass $\delta(x_0,x_1)=1$ bezeichnen wir sie als \textbf{benachbart}. 
+\item Wir können eine Menge $\T$ als \textbf{diskrete Zeit} bezeichnen, wenn sie maximal abzählbar unendlich ist, d.h. wenn
+\[ |\T| \leq \aleph_0,\]
+und eine lineare Ordnung $\leq$ auf $\T$ existiert. Ein $t\in\T$ bezeichnen wir als \textbf{Zeitpunkt}. Für ein $t_0\in\T$ bezeichnen wir
+\[\delta(t):=\operatorname{min}\{t\in\T \;|\; t_0\leq t\}\]
+als den \textbf{Nachfolger} von $t_0$.
+\end{enumerate}
+\end{definition} %Geordnetheit, etc. %
+
+So wird $\X$ in der Praxis z.B. ein durch ganzzahlige, kartesische Koordinaten beschreibbarer euklidischer Raum\footnote{In der Realität ist der Raum wahrscheinlich nicht euklidisch (vgl. Raumkrümmung in der Relativitätstheorie).} sein. Die Zeit $\T$ werden wir im Laufe dieser Arbeit durch die ganzen Zahlen umsetzen. Dass die Voraussetzungen von Definition \ref{def_ortundzeit} (b) dabei erfüllt sind, ist straightforward (vgl. im Anhang 4.1 \textit{Straightforwardness von Beweisen}).
+
+% Definition von Teilchen selbst?%
+
+\begin{definition}
+Es sei $\Phi$ ein \textbf{Teilchen}. Des Weiteren bezeichne $x\in\X$ eine Position und $t\in\T$ einen Zeitpunkt. Wir sagen
+\[\Phi \;\rtimes_t\; x,\]
+wenn sich $\Phi$ an der Position $x$ zum Zeitpunkt $t$ befindet.
+\end{definition}
+
+\subsection{Eindimensionale Bewegungen}
+
+Im eindimensionalen Fall können wir den Raum durch die ganze Zahlen darstellen, d.h. $\X := \Z$. Die Nachbarschaftsfunktion $\delta$ ist in diesem Fall definiert durch 
+\[\delta(x_0,x_1):=\begin{cases}
+1 \quad&\mbox{wenn } |x_0-x_1|=1,\\
+0 \quad&\mbox{ansonsten.}
+\end{cases}\]
+
+
+
+Ein Teilchen $\Phi$ sei vollständig charakterisiert durch eine Funktion \[\phi: \Z \times \Z \rightarrow [ 0;1],\]
+wobei $\phi(x,t)$ die Wahrscheinlichkeit, dass sich das Teilchen zum Zeitpunkt $t$ an der Position $x$ befindet, beschreibt.
+
+\subsection{Zweidimensionale Bewegungen}
+
+\subsection{Die Unschärferelation}
 
 \section{Perspektive}
 
