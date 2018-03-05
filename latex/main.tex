@@ -22,6 +22,9 @@
 \theoremstyle{plain}
 \newtheorem{theorem}{Satz}
 
+\theoremstyle{plain}
+\newtheorem{postulate}{Postulat}
+
 % Line spacing
 \renewcommand{\baselinestretch}{1.5} 
 
@@ -31,6 +34,7 @@
 \newcommand{\T}{\mathbb{T}}
 \newcommand{\X}{\mathbb{X}}
 
+\newcommand{\at}[1]{\;\rtimes_{#1}\;}
 
 \begin{document}
 
@@ -55,7 +59,7 @@ Sehr interessant sind die Einschränkungen, die diese Form der Bilderstellung de
 
 In der Realität außerhalb der Computer-Bildschirme hingegen -- so könnte man sich im Angesicht dieser Unvollkommenheit zureden -- existieren solche Probleme nicht; man könne ja unendlich weit "reinzoomen" in unser Universum. Derartige Überlegungen finden ihren Höhepunkt z.B. in der Analysis, genauer in der Infinitesimalrechnung, die mathematische Sachverhalte bis in unendliche Genauigkeit darstellen kann. 
 
-Der elementare Gegensatz sind hier die mathematische Begriffe \textit{diskret} und \textit{kontinuerlich}. Ein Computer-Bildschirm, der aus einer endlichen Anzahl an Pixeln besteht, kann nur diskretes fassen, während unser Universum (scheinbar) auch kontinuierliche Größen fassen kann. Mathematisch präziser formuliert, betrachtet die diskrete Mathematik nur endliche oder abzählbar unendliche Mengen, während die nicht-diskrete Mathematik (z.B. die Analysis) insbesondere eben auch überabzählbar unendliche Mengen wie die reellen Zahlen untersucht. So entstehen Konzepte wie die Stetigkeit einer Variable, die im Diskreten nicht existieren können.
+Der elementare Gegensatz sind hier die mathematischen Begriffe \textit{diskret} und \textit{kontinuerlich}. Ein Computer-Bildschirm, der aus einer endlichen Anzahl an Pixeln besteht, kann nur diskretes fassen, während unser Universum (scheinbar) auch kontinuierliche Größen fassen kann. Mathematisch präziser formuliert, betrachtet die diskrete Mathematik nur endliche oder abzählbar unendliche Mengen, während die nicht-diskrete Mathematik (z.B. die Analysis) insbesondere eben auch überabzählbar unendliche Mengen wie die reellen Zahlen untersucht. So entstehen Konzepte wie die Stetigkeit einer Variable, die im Diskreten nicht existieren können.
 
 Bereits gegen Ende des 19. Jh. stellte sich jedoch heraus, dass bisher für kontinuierlich gehaltene physikalische Größen und Phänomene wie die Ladung oder das Licht aus diskreten Grundeinheiten, sogenannten \textit{quanta} bestehen (d.h. Elektronen im Fall von Ladung; Photonen im Fall von Licht). Im Zuge dessen entwickelte sich Anfang des 20. Jh. die Quantenphysik, welche Phänomene und Größen, die nur feste diskrete Werte annehmen können, untersucht. Letzteres wird auch als \textit{Quantelung} bezeichnet.
 
@@ -69,7 +73,7 @@ Des Weiteren lässt sich die Planck-Zeit definieren
 \[t_P \approx 5.39116\cdot 10^{-44}s,\]
 die in der Schleifenquantengravitation die diskrete Grundeinheit der Zeit ist. Damit wäre sie im Kontext der eben bereits aufgefassten Computerbildschirm-Analogie mit der vergangenen Zeit zwischen zwei Frames z.B. eines digitalen Videos vergleichbar. 
 
-Ohne Anspruch auf physikalische Treffsicherheit spielt diese Arbeit mit dem Konzept von diskreten Raum- und Zeiteinheiten unter der Annahme, dass die nicht unterschritten werden können. Wir werden grundlegende Teilchenbewegungen modellieren mit dem Ziel herauszufinden, welche Implikationen diese Diskretheit nach sich zieht. 
+Ohne Anspruch auf physikalische Treffsicherheit spielt diese Arbeit mit dem Konzept von diskreten Raum- und Zeiteinheiten unter der Annahme, dass die nicht unterschritten werden können. Wir werden grundlegende Teilchenbewegungen modellieren mit dem Ziel, herauszufinden, welche Implikationen diese Diskretheit birgt. 
 
 Ich möchte nochmals betonen, dass ich keinesfalls behaupte, von den physikalischen Details auch nur annähernd Ahnung zu haben -- die tatsächliche moderne Quantenphysik ist wesentlich komplexer. Es handelt sich hierbei um rein mathematische Überlegungen, die keinen Zusammenhang zu echten physikalischen Phänomenen anstreben. Das Ziel ist es sich dem Konzept des Diskreten zu Nähern und herauszufinden, was für Folgen dies unter anderem haben könnte. % Erster und letzter Satz überarbeiten %
 
@@ -89,28 +93,50 @@ Im Folgenden werden wir die Konzepte \textit{Ort} und \textit{Zeit} benötigen. 
 
 \begin{definition}\label{def_ortundzeit}
 \begin{enumerate}[(a)]
-\item Wir können eine Menge $\X$ als \textbf{diskreter Raum} bezeichnen, wenn sie maximal abzählbar unendlich ist, d.h. wenn
-\[ |\X| \leq \aleph_0,\]
-und wenn eine \textbf{Nachbarschaftsfunktion} $\delta: \X^2\rightarrow\{0,1\}$ existiert, so dass
-\[\forall\, x\in\X\quad\exists\, x_0\in\X: \quad\delta(x,x_0)=1.\]
-und
-\[\forall\, x_0,x_1\in\X: \quad\delta(x_0,x_1)=\delta(x_1,x_0).\]
-Ein $x\in\X$ bezeichnen wir als \textbf{Position}. Wenn für $x_0,x_1\in\X$ gilt, dass $\delta(x_0,x_1)=1$ bezeichnen wir sie als \textbf{benachbart}. 
-\item Wir können eine Menge $\T$ als \textbf{diskrete Zeit} bezeichnen, wenn sie maximal abzählbar unendlich ist, d.h. wenn
-\[ |\T| \leq \aleph_0,\]
-und eine \textbf{Nachfolgerfunktion} $\mu: \T \rightarrow \T$ existiert. Ein $t\in\T$ bezeichnen wir als \textbf{Zeitpunkt}.
+	\item Wir können eine Menge $\X$ als \textbf{diskreter Raum} 	bezeichnen, wenn sie maximal abzählbar unendlich ist, d.h. 			wenn
+	\[ |\X| \leq \aleph_0,\]
+	und außerdem eine \textbf{Nachbarschaftsfunktion} $\delta: 			\X^2\rightarrow\{0,1\}$ existiert mit
+	\begin{enumerate}[(i)]
+		\item$\forall\, x\in\X\quad\exists\, x_0\in\X: \quad				\delta(x,x_0)=1,$
+		\item$\forall\, x_0,x_1\in\X: \quad\delta(x_0,x_1)=					\delta(x_1,x_0),$ 
+		\item$\forall\, x\in\X: \quad \delta(x,x)=0.$
+	\end{enumerate}
+	Ein $x\in\X$ bezeichnen wir als \textbf{Position}. Wenn für 		$x_0,x_1\in\X$ gilt, dass $\delta(x_0,x_1)=1$ bezeichnen wir 	sie als \textbf{benachbart}, andernfalls als \textbf{nicht 			benachbart}. 
+	\item Wir können eine Menge $\T$ als \textbf{diskrete Zeit} 		bezeichnen, wenn sie maximal abzählbar unendlich ist, d.h. 			wenn
+	\[ |\T| \leq \aleph_0,\]
+	und außerdem eine \textbf{Nachfolgerfunktion} $\mu: \T 				\rightarrow \T$ existiert, wobei $\forall \,t\in\T: \;\mu(t)		\neq t$. Ein $t\in\T$ bezeichnen wir als \textbf{Zeitpunkt}.
 \end{enumerate}
 \end{definition} %Geordnetheit, etc. %
 
-So wird $\X$ in der Praxis z.B. ein durch ganzzahlige, kartesische Koordinaten beschreibbarer euklidischer Raum\footnote{In der Realität ist der Raum wahrscheinlich nicht euklidisch (vgl. Raumkrümmung in der Relativitätstheorie).} sein. Die Zeit $\T$ werden wir im Laufe dieser Arbeit durch die ganzen Zahlen umsetzen. Dass die Voraussetzungen von Definition \ref{def_ortundzeit} (b) dabei erfüllt sind, ist straightforward (vgl. im Anhang 4.1 \textit{Straightforwardness von Beweisen}).
+So wird $\X$ in der Praxis z.B. ein durch ganzzahlige, kartesische Koordinaten beschreibbarer euklidischer Raum\footnote{In der Realität ist der Raum wahrscheinlich nicht euklidisch (vgl. Raumkrümmung in der Relativitätstheorie).} sein. Die Zeit $\T$ werden wir im Laufe dieser Arbeit durch die ganzen Zahlen umsetzen, wobei $\mu(t):=t+1$ sei.
+
+%Woanders noch verwenden:%
+%Dass die Voraussetzungen von Definition \ref{def_ortundzeit} (b) dabei erfüllt sind, ist straightforward ($\rightarrow$ Anhang 4.1 \textit{Straightforwardness von Beweisen}).%
 
 % Definition von Teilchen selbst?%
 
 \begin{definition}
 Es sei $\Phi$ ein \textbf{Teilchen}. Des Weiteren bezeichne $x\in\X$ eine Position und $t\in\T$ einen Zeitpunkt. Wir sagen
-\[\Phi \;\rtimes_t\; x,\]
+\[\Phi \at{t} x,\]
 wenn sich $\Phi$ an der Position $x$ zum Zeitpunkt $t$ befindet.
 \end{definition}
+
+\subsection{Grundprinzipien}
+
+Benachbarte Punkte sind Punkte im Abstand einer Planck-Länge. %Anders formulieren%
+Der Nachfolger eines Zeitpunkts, ist ein Zeitpunkt in einer Planck-Zeit Abstand. Interessanterweise gilt
+\[c=\frac{l_P}{t_P},\]
+wobei $c$ die Lichtgeschwindigkeit ist. Die in der Physik gemeinhin akzeptierte Annahme, dass die Lichtgeschwindigkeit nicht überschritten werden kann, übersetzen wir mit Postulat \ref{pos_lightspeed} in unser mathematisches Modell.
+
+\begin{postulate}\label{pos_lightspeed}
+Es sei $\Phi$ ein Teilchen. Des Weiteren gelte für ein $x_0\in\X$ und ein $t\in\T$
+\[\Phi \at{t} x_0.\]
+Wenn für ein $x_1\in\X$ 
+\[\Phi \at{\mu(t)} x_1\]
+gilt, dann muss $\delta(x_0,x_1)=1$ oder $x_0=x_1$ gelten.
+\end{postulate}
+
+Dieses Geschwindigkeitslimit bezeichnen wir im Folgenden als \textit{Maximalgeschwindigkeit}, um nicht das Wort Lichtgeschwindigkeit verwenden zu müssen.
 
 \subsection{Eindimensionale Bewegungen}
 
@@ -120,7 +146,24 @@ Im eindimensionalen Fall können wir den Raum durch die ganze Zahlen darstellen,
 0 \quad&\mbox{ansonsten.}
 \end{cases}\]
 
+Betrachten wir also ein Teilchen $\Phi$, für das $\Phi \at{0} 0$ gelte. Stellen wir uns $\Phi$ zum Zeitpunkt 0 an der Stelle 0 einer horizontalen Zahlengeraden vor mit den positiven Zahlen zur Rechten. Eine Bewegung von $\Phi$ mit Maximalgeschwindigkeit nach rechts, ließe sich nun folgendermaßen beschreiben:
+\[\Phi \at{0} 0,\quad \Phi \at{1} 1,\quad \Phi \at{2} 2,\quad\Phi\at{3} 3,\;\dots\]
 
+Was ist allerdings, wenn $\Phi$ sich langsamer bewegt? Mal angenommen, es bewegte sich in halber Maximalgeschwindigkeit: Da es sich in einem Zeitschritt um entweder genau eine Einheit oder gar keine bewegen muss, ist es nicht möglich innerhalb einer Zeiteinheit eine halbe Maximalgeschwindigkeit umzusetzen. 
+
+Wenn sich $\Phi$ allerdings in zwei Zeiteinheiten um insgesamt eine Raumeinheit bewegt, dann ist die effektive Geschwindigkeit tatsächlich die halbe Maximalgeschwindigkeit. Ähnlich wie also Pixel-Artists gerade Linien oder Kreise approximieren, so können wir Bewegungen auf anderen Geschwindigkeiten als der Maximalgeschwindigkeit approximieren durch abwechselndes Verweilen und Bewegen auf Maximalgeschwindigkeit.
+
+%Abbildung Linie von Pixel-Artist und Bewegung%
+
+Es gibt zwei Arten, eine Bewegung auf halber Geschwindigkeit in den ersten beiden Zeitschritten zu vollziehen:
+\[\Phi\at{0}0,\;\Phi\at{1}0,\; \Phi\at{2}1 \quad\text{und}\quad \Phi\at{0}0,\;\Phi\at{1}1,\;\Phi\at{2}1.\]
+
+Wie entscheidet sich also, wo sich $\Phi$ zum Zeitpunkt 1 befindet? Da beide gerade aufgezeigten Varianten -- aus unserem Blickwinkel -- vollkommen gleichwertig sind, müssten wir, um ein deterministisches Gesetz für die Bewegung von $\Phi$ zu haben, arbiträr eine der beiden Varianten bevorzugen. Wenn wir dies nicht tun wollen, bleibt es uns nur übrig, die Voraussetzung des Determinismus aufzugeben -- genau wie es die Quantenphysik auch tat. 
+
+So sagen wir nun also: Mit einer Wahrscheinlichkeit von $\frac{1}{2}$ befindet sich $\Phi$ zum Zeitpunkt 1 an Position 0 und mit einer Wahrscheinlichkeit von $\frac{1}{2}$ befindet es sich an Position 1 zu diesem Zeitpunkt. In anderen Worten: 
+\[P(\Phi\at{1}0)=\frac{1}{2} \quad\text{und}\quad P(\Phi\at{1}1)=\frac{1}{2}.\]
+
+Im Folgenden werden wir uns allerdings gar nicht dafür interessieren, an welcher Position sich $\Phi$ zum Zeitpunkt 1 letztlich befinden wird; uns interessiert lediglich mit welcher Wahrscheinlichkeit es sich wo befindet. Eine Interpretation der Quantemechanik besagt, dass für bestimmte Objekte mit probabilistischen Eigenschaften -- ähnlich zu denen unseres Teilchens -- sich ohne "Messung" gar nicht erst entscheidet, welche der verschiedenen möglichen Eigenschaften das betrachte Objekt tatsächlich einnimmt; es befindet sich in einer \textit{Superposition} aus den verschiedenen Möglichkeiten. Genauso können wir sagen, dass $\Phi$ zum Zeiptunkt 1 in einer Superposition der Positionen 0 und 1 ist.
 
 Ein Teilchen $\Phi$ sei vollständig charakterisiert durch eine Funktion \[\phi: \Z \times \Z \rightarrow [ 0;1],\]
 wobei $\phi(x,t)$ die Wahrscheinlichkeit, dass sich das Teilchen zum Zeitpunkt $t$ an der Position $x$ befindet, beschreibt.
