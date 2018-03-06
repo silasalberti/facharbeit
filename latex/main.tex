@@ -9,6 +9,7 @@
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{amsthm}
+\usepackage{nicefrac}
 
 \usepackage[shortlabels]{enumitem}
 
@@ -25,14 +26,18 @@
 \theoremstyle{plain}
 \newtheorem{postulate}{Postulat}
 
+\theoremstyle{plain}
+\newtheorem{corollary}{Korollar}
+
 % Line spacing
 \renewcommand{\baselinestretch}{1.5} 
 
 \newcommand{\Z}{\mathbb{Z}}
 \newcommand{\C}{\mathbb{C}}
-\newcommand{\Cz}{\mathbb{C}_\mathbb{Z}}
+\newcommand{\Cn}{\mathbb{C}_\mathbb{n}}
 \newcommand{\T}{\mathbb{T}}
 \newcommand{\X}{\mathbb{X}}
+\newcommand{\N}{\mathbb{N}}
 
 \newcommand{\at}[1]{\;\rtimes_{#1}\;}
 
@@ -165,11 +170,73 @@ So sagen wir nun also: Mit einer Wahrscheinlichkeit von $\frac{1}{2}$ befindet s
 
 Im Folgenden werden wir uns allerdings gar nicht dafür interessieren, an welcher Position sich $\Phi$ zum Zeitpunkt 1 letztlich befinden wird; uns interessiert lediglich mit welcher Wahrscheinlichkeit es sich wo befindet. Eine Interpretation der Quantemechanik besagt, dass für bestimmte Objekte mit probabilistischen Eigenschaften -- ähnlich zu denen unseres Teilchens -- sich ohne "Messung" gar nicht erst entscheidet, welche der verschiedenen möglichen Eigenschaften das betrachte Objekt tatsächlich einnimmt; es befindet sich in einer \textit{Superposition} aus den verschiedenen Möglichkeiten. Genauso können wir sagen, dass $\Phi$ zum Zeiptunkt 1 in einer Superposition der Positionen 0 und 1 ist.
 
-Ein Teilchen $\Phi$ sei vollständig charakterisiert durch eine Funktion \[\phi: \Z \times \Z \rightarrow [ 0;1],\]
-wobei $\phi(x,t)$ die Wahrscheinlichkeit, dass sich das Teilchen zum Zeitpunkt $t$ an der Position $x$ befindet, beschreibt.
+\begin{definition}
+Die Position eines Teilchen $\Phi$ sei vollständig charakterisiert durch eine Charakterisierungsfunktion $\psi: \X\times\T \rightarrow [0;1]$ mit
+\[\forall\, x\in\X\quad\forall\, t\in\T:\quad
+P(\Phi\at{t}x)=\psi(x,t).\]
+\end{definition}
+
+\begin{corollary}\label{cor_summe}
+Da es sich bei gegebenem $t$ bei $\psi$ um eine Wahrscheinlichkeitsverteilung in $x$ handelt, gilt
+\[\sum_{x\in\X} \psi(x,t)=1 \quad\forall\,t\in\T.\]
+\end{corollary}
+
+Aufgrund von Korollar \ref{cor_summe} betrachten wir von nun an bei einem gegebenen Zeitpunkt $t_0$ nur noch die Werte von $\psi$ mit $\psi(x,t_0)\neq0$. Alle anderen Werte seien dann implizit 0.
+
+Wir wissen also, dass bei einer Geschwindigkeit von $\frac{1}{2}$  eben $\psi(0,0)=1$, $\psi(0,1)=\frac{1}{2}$ und $\psi(1,1)=\frac{1}{2}$ gilt. Zum Zeitpunkt 2 sollte nun erwartungsgemäß $\psi(0,2)=0$ und $\psi(1,2)=1$ gelten, womit sich $\Phi$ in zwei Zeiteinheiten um eine Längeneinheit bewegt hat. Wir erinnern uns allerdings daran, dass wir durch $\psi$ nur die Superpositionen verschiedener einzelner Bewegungen simulieren. Im Falle von $\Phi\at{1}0$ bewegt sich $\Phi$ also zum Zeitpunkt 2 um eine Einheit weiter; bei $\Phi\at{1}1$ bleibt es hingegen stehen. Die Gesetzesmäßigkeiten für die Fortbewegung von $\Phi$ unterscheiden sich hier also in beiden Fällen. Eine Grundvoraussetzung sei es allerdings, dass wir eindeutige Gesetze haben, die für alle Positionen und Zeitpunkte gleichermaßen gelten.
+
+Dieses Problem könnte durch eine weitere Variable gelöst werden, die zum Zeitpunkt 1 variiert wird, je nach dem, ob sich bewegt wurde oder nicht. Diese könnte dann für den Zeitpunkt 2 zur Entscheidung zwischen Bewegen und Nichtbewegen genutzt werden. Wir entscheiden uns jedoch bewusst gegen eine solche Variable und betrachten dagegen die Folgerungen, die der Verzicht auf eine solche bietet.
+
+\begin{postulate}\label{pos_einstein}
+Es sei $\psi$ eine Charakterisierungsfunktion, für die beliebige Gesetzesmäßigkeiten gelten. Dann gelte für alle Charakterisierungsfunktionen $\psi_0$ und $\psi_1$ dieselben Gesetzesmäßigkeiten insofern sie
+\[\psi(x,t)=a\cdot\psi_0(x,t)+b\cdot\psi_1(x,t)\quad\forall\,x\in\X\;\;\forall\,t \in\T\]
+mit $a,b\in[0,1]$ und $a+b=1$ erfüllen.
+\end{postulate}
+
+Wir können also unsere Funktion $\psi$ in $\psi_0$ mit $\psi_0(0,1)=1$ und $\psi_1$ mit $\psi_1(1,1)=1$ für $a=b=\frac{1}{2}$ aufteilen. Es gilt unter Anwendung derselben Gesetzesmäßigkeiten, wie wir bei $\psi$ verwendeten, für $\psi_0$, dass $\psi_0(0,2)=\frac{1}{2}$ und $\psi_0(1,2)=\frac{1}{2}$ und für $\psi_1$, dass $\psi_1(1,2)=\frac{1}{2}$ und $\psi_1(2,2)=\frac{1}{2}$. 
+
+Durch das gewichtete Summieren erhalten wir wiederum für $\psi$, dass $\psi(0,2)=\frac{1}{4}$, $\psi(1,2)=\frac{1}{2}$ und $\psi(2,2)=\frac{1}{4}$. Der Erwartungswert der Position von $\Phi$ ist also immer noch bei $x=1$; nur die Varianz hat sich durch Postulat \ref{pos_einstein} vergrößert.
+
+Mittels mehrfachen Anwendens von Postulat \ref{pos_einstein} kann man $\psi$ auch für die Zeitpunkte $t>2$ bestimmen. Man wird erkennen, dass es sich bei $\psi$ bei gegebenem $t$ um eine Binomialverteilung mit Erwartungswert bei $x=\frac{1}{2}t$ handelt. Während sich also die Varianz von $\psi$ immer weiter erhöht, bewegt sich der Erwartungswert exakt mit der Geschwindigkeit $\frac{1}{2}$.
+
+\subsubsection{Allgemeine Geschwindigkeit}
+
+Für eine Geschwindigkeit $v$ eines Teilchens muss gelten $|v|\leq 1$. Eine negative Geschwindigkeit könnte in diesem Kontext als Bewegung in negative x-Richtung aufgefasst werden, allerdings beschränken wir uns der Einfachheit auf den positiven Fall. Der negative Fall würde analog, nur mit anderen Vorzeichen, funktionieren, und eine Beachtung dessen würde die Komplexität der Gleichungen, nicht aber nicht die anzustrebende Einsicht erhöhen.
+
+Naheliegend ist nun die Gesetzesmäßigkeit, dass bei gegebenem $v\geq0$, $x_0$ und $t_0$ mit $\psi(x_0,t_0)=1$ gilt, dass $\psi(x_0,t_0+1)=1-v$ und $\psi(x_0+1,t_0+1)=v$. So befindet sich der Erwartungswerten von $\psi$ für $t=t_0+1$ bei $x=x_0+v$. Innerhalb einer Zeiteinheit hat sich das Teilchen durchschnittlich also um $v$ bewegt. 
+
+Durch mehrfache Anwendung von Postulat \ref{pos_einstein} erhält man die Rekursionsgleichung
+\[\psi(x,t)=v\cdot\psi(x-1,t-1)+(1-v)\cdot\psi(x,t-1) \quad\forall\, t>t_0 \;\;\forall x\in\X.\]
+
+Es lässt sich leicht beweisen, dass der Erwartungswert von $\psi$ zum Zeitpunkt $t=t_0+\Delta t$ genau $x=x_0+v\cdot\Delta t$ ist. Durch diese Rekursionsgleichung ist also die Bewegung im eindimensionalen Fall vollständig beschrieben, weswegen wir uns nun der zweiten Dimension zuwenden.
+
+%In Abhängigkeit einer Startposition $\Phi\at{t_0}x_0$ und einer Geschwindigkeit $v$ die Funktion $\psi$ durch folgende Rekursionsgleichung charakterisieren:
+%\begin{enumerate}
+%\item $\psi(x_0,t_0)=1$
+%\item $\psi(x,t_0)=0 \quad\forall\, x\in\Z$
+%\item $\psi(x,t)=v\cdot\psi(x-1,t-1)\\\phantom{\psi(x,t)=}+(1-v)\cdot\psi(x,t-1) \quad\forall\, t>t_0 \;\;\forall x\in\X$
+%\end{enumerate}
+
 
 \subsection{Zweidimensionale Bewegungen}
 
+Ein zweidimensionaler, diskreter Raum könnte zum Beispiel durch $\X=\Z^2$ dargestellt werden. Ähnlich wie wir es im eindimensionalen Fall hatten, beschränken wir uns in dieser Arbeit der Übersichtlichkeit halber allerdings auf den 1. Quadranten, d.h. beide Komponenten einer Position seien positiv. 
+
+Es sei also $\X=\N^2$ und $\T=\Z$. Neben der Geschwindigkeit $v\in[0;1]$ muss nun für die Bewegung eines Teilchens ebenfalls eine Richtung $\theta\in[0;\nicefrac{\tau}{4}]$ mit $\tau=2\pi$ gegeben sein.
+
+Betrachten wir nun zuerst den Fall $\theta=\nicefrac{\tau}{8}\;\widehat{=}\;45^{\,\circ}$. Außerdem gelte $\Phi\at{0} (0,0)$. Zum Zeitpunkt 1 kann $\Phi$ sich aufgrund unserer Grundvoraussetzung der maximalen Bewegung um eine Längeneinheit pro Zeitschritt nicht auf Position $(1,1)$ befinden, was der geringsten, eindeutigen Bewegung im $45^{\,\circ}$-Winkel entspräche.
+
+Bei einer Bewegung mit maximaler Geschwindigkeit befände sich $\Phi$ zum Zeitpunkt 1 in einer Superposition aus $(0,1)$ und $(1,0)$. Es gilt also $\psi((1,0),1)=\frac{1}{2}$ und $\psi((0,1),1)=\frac{1}{2}$.
+
+Für ein allgemeines $\theta\in[0;\nicefrac{\tau}{4}]$ können wir sagen $\psi((1,0),1)=\frac{\sin(\theta)}{\sin(\theta)+\cos(\theta)}$ und $\psi((1,0),1)=\frac{\cos(\theta)}{\sin(\theta)+\cos(\theta)}$. Der Erwartungswert der Position zum Zeitpunkt 1 ist damit 
+$\left(\frac{\sin(\theta)}{\sin(\theta)+\cos(\theta)},\frac{\cos(\theta)}{\sin(\theta)+\cos(\theta)}\right)$. Der Winkel zur x-Achse ist also tatsächlich $\theta$. 
+
+Geschwindigkeit können wir nun noch umsetzen, indem wir -- analog zum eindimensionalen Fall -- eine Bewegung der Geschwindigkeit $v$ als Superposition aus gar keiner Bewegung und der maximalen Bewegung darstellen, gewichtet jeweils mit $1-v$ und $v$. So erhalten wir $\psi((0,0),1)=1-v$,\; $\psi((1,0),1)=\frac{v\cdot\sin(\theta)}{\sin(\theta)+\cos(\theta)}$ und $\psi((1,0),1)=\frac{v\cdot\cos(\theta)}{\sin(\theta)+\cos(\theta)}$. Als Betrag des Erwartungswertes erhalten wir dann
+\begin{align*}
+&\sqrt{\left(\frac{v\cdot\sin(\theta)}{\sin(\theta)+\cos(\theta)}\right)^2+\left(\frac{v\cdot\cos(\theta)}{\sin(\theta)+\cos(\theta)}\right)^2}\\
+=&\;\sqrt{\frac{v^2(\sin^2(\theta)+\cos^2(\theta))}{(\sin(\theta)+\cos(\theta))^2}}=\frac{v}{\sin(\theta)+\cos(\theta)}.
+\end{align*}
+Wir wollen allerdings nicht, dass die zurückgelegte Distanz am Erwartungswert gemessen von $\theta$ abhängt, da dies mit der Auffassung von Bewegungen in der Realität nicht übereinstimmt. Daher charakterisieren wir unser Teilchen durch $v_e:=\frac{v}{\sin(\theta)+\cos(\theta)}.$ Da $v\leq1$ sein muss, und 
 \subsection{Die Unschärferelation}
 
 \section{Perspektive}
