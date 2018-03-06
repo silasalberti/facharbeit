@@ -124,6 +124,3 @@ ENV/
 *.mtc1
 *.out
 *.synctex.gz
-
-# LaTeX-PDF-Output
-*.pdf
