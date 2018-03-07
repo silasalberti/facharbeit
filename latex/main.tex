@@ -13,6 +13,10 @@
 
 \usepackage[shortlabels]{enumitem}
 
+\usepackage{graphicx}
+\usepackage{subfig}
+\usepackage{float}
+
 \title{Die Heisenberg'sche Unschärferelation anhand von diskreten Wahrscheinlichkeitsverteilungen}
 \author{Silas Alberti}
 \date{Februar 2018}
@@ -72,7 +76,7 @@ Als Gründervater der Quantenphysik gilt der deutsche Physiker Max Planck (* 185
 \[ l_P \approx 1.616 229 \cdot 10^{-35}m,\]
 die der Anstoß für die in dieser Arbeit geführten Überlegungen ist. Der aktuellen -- noch nicht bewiesenen -- Theorie der Schleifenquantengravitation zufolge, die als die einzige weit entwickelte Alternative zur bekannteren String-Theorie gilt, ist nämlich das gesamte Universum durch die Planck-Länge quantisiert. Einfach dargestellt könnte man sagen, unser Universum bestehe aus Pixeln der Größe der Planck-Länge.
 
-Tatsächlich wäre es demnach nicht möglich in unserem Universum einen perfekten Kreis zu erschaffen. 
+Wie in der Pixel-Art wäre es demnach tatsächlich nicht möglich, in unserem Universum einen perfekten Kreis zu erschaffen. 
 
 Des Weiteren lässt sich die Planck-Zeit definieren
 \[t_P \approx 5.39116\cdot 10^{-44}s,\]
@@ -94,7 +98,7 @@ Im Laufe der Arbeit werde ich öfters Parallelen zu quantenphysikalischen Phäno
 
 Begeben wir uns also auf die tiefstmögliche Ebene. Im Zentrum der folgenden Überlegungen wird ein "Teilchen" der Größe einer Planck-Länge stehen. Dabei sei der Begriff als ein reines mathematisches Objekt zu verstehen, ohne direkte physikalische Interpretation.
 
-Im Folgenden werden wir die Konzepte \textit{Ort} und \textit{Zeit} benötigen. Bevor die deren Struktur konkretisieren, betrachten wir sie erstmal als abstrakte Konzepte.
+Im Folgenden werden wir die Konzepte \textit{Ort} und \textit{Zeit} benötigen. Bevor wir deren Struktur konkretisieren, betrachten wir sie erstmal als abstrakte Konzepte. Die folgenden Definitionen sind nicht ausreichend, um Bewegungen eines Teilchens eine vollständige Grundlage zu bieten; es fehlen Konzepte wie Distanz und Richtung. Dennoch wollen wir bereits eine Auffassung von Benachbarung im Raum und Aufeinanderfolgen in Zeit schaffen, da diese Zusammenhänge in unserem Modell das Konzept des "Abstandes" von Planck-Länge bzw. Planck-Zeit umsetzen.
 
 \begin{definition}\label{def_ortundzeit}
 \begin{enumerate}[(a)]
@@ -170,7 +174,7 @@ So sagen wir nun also: Mit einer Wahrscheinlichkeit von $\frac{1}{2}$ befindet s
 
 Im Folgenden werden wir uns allerdings gar nicht dafür interessieren, an welcher Position sich $\Phi$ zum Zeitpunkt 1 letztlich befinden wird; uns interessiert lediglich mit welcher Wahrscheinlichkeit es sich wo befindet. Eine Interpretation der Quantemechanik besagt, dass für bestimmte Objekte mit probabilistischen Eigenschaften -- ähnlich zu denen unseres Teilchens -- sich ohne "Messung" gar nicht erst entscheidet, welche der verschiedenen möglichen Eigenschaften das betrachte Objekt tatsächlich einnimmt; es befindet sich in einer \textit{Superposition} aus den verschiedenen Möglichkeiten. Genauso können wir sagen, dass $\Phi$ zum Zeiptunkt 1 in einer Superposition der Positionen 0 und 1 ist.
 
-\begin{definition}
+\begin{definition}\label{def_psi}
 Die Position eines Teilchen $\Phi$ sei vollständig charakterisiert durch eine Charakterisierungsfunktion $\psi: \X\times\T \rightarrow [0;1]$ mit
 \[\forall\, x\in\X\quad\forall\, t\in\T:\quad
 P(\Phi\at{t}x)=\psi(x,t).\]
@@ -231,33 +235,132 @@ Bei einer Bewegung mit maximaler Geschwindigkeit befände sich $\Phi$ zum Zeitpu
 Für ein allgemeines $\theta\in[0;\nicefrac{\tau}{4}]$ können wir sagen $\psi((1,0),1)=\frac{\sin(\theta)}{\sin(\theta)+\cos(\theta)}$ und $\psi((1,0),1)=\frac{\cos(\theta)}{\sin(\theta)+\cos(\theta)}$. Der Erwartungswert der Position zum Zeitpunkt 1 ist damit 
 $\left(\frac{\sin(\theta)}{\sin(\theta)+\cos(\theta)},\frac{\cos(\theta)}{\sin(\theta)+\cos(\theta)}\right)$. Der Winkel zur x-Achse ist also tatsächlich $\theta$. 
 
-Geschwindigkeit können wir nun noch umsetzen, indem wir -- analog zum eindimensionalen Fall -- eine Bewegung der Geschwindigkeit $v$ als Superposition aus gar keiner Bewegung und der maximalen Bewegung darstellen, gewichtet jeweils mit $1-v$ und $v$. So erhalten wir $\psi((0,0),1)=1-v$,\; $\psi((1,0),1)=\frac{v\cdot\sin(\theta)}{\sin(\theta)+\cos(\theta)}$ und $\psi((1,0),1)=\frac{v\cdot\cos(\theta)}{\sin(\theta)+\cos(\theta)}$. Als Betrag des Erwartungswertes erhalten wir dann
+Geschwindigkeit können wir nun noch umsetzen, indem wir -- analog zum eindimensionalen Fall -- eine Bewegung der Geschwindigkeit $v$ als Superposition aus der Situation mit gar keiner Bewegung und der Situation mit der, eben schon formulierten, maximalen Bewegung darstellen, gewichtet jeweils mit $1-v$ bzw. $v$. So erhalten wir $\psi((0,0),1)=1-v$,\; $\psi((1,0),1)=\frac{v\cdot\sin(\theta)}{\sin(\theta)+\cos(\theta)}$ und $\psi((1,0),1)=\frac{v\cdot\cos(\theta)}{\sin(\theta)+\cos(\theta)}$. Als Betrag des Erwartungswertes erhalten wir dann
 \begin{align*}
 &\sqrt{\left(\frac{v\cdot\sin(\theta)}{\sin(\theta)+\cos(\theta)}\right)^2+\left(\frac{v\cdot\cos(\theta)}{\sin(\theta)+\cos(\theta)}\right)^2}\\
 =&\;\sqrt{\frac{v^2(\sin^2(\theta)+\cos^2(\theta))}{(\sin(\theta)+\cos(\theta))^2}}=\frac{v}{\sin(\theta)+\cos(\theta)}.
 \end{align*}
-Wir wollen allerdings nicht, dass die zurückgelegte Distanz am Erwartungswert gemessen von $\theta$ abhängt, da dies mit der Auffassung von Bewegungen in der Realität nicht übereinstimmt. Daher charakterisieren wir unser Teilchen durch $v_e:=\frac{v}{\sin(\theta)+\cos(\theta)}.$ Da $v\leq1$ sein muss, und 
+Wir wollen allerdings Geschwindigkeiten nicht derart charakterisieren, dass die dann tatsächlich zurückgelegte Distanz -- am Betrag des Erwartungswerts gemessen -- zusätzlich noch von $\theta$ abhängt, da dies mit der Auffassung von Bewegungen in der Realität nicht übereinstimmt. Daher charakterisieren wir unser Teilchen durch die 
+Erwartungswertgeschwindigkeit $v_e:=\frac{v}{\sin(\theta)+\cos(\theta)}.$ 
+
+Wegen $v\leq1$, erhalten wir $v_e\leq\frac{1}{\sin(\theta)+\cos(\theta)}$. Der Nenner auf der rechten Seite wird maximal für $\theta=\nicefrac{\tau}{8}$, wie sich durch Ableiten feststellen lässt. Da wir ein $v_e$ unabhängig von $\theta$ wählen können wollen, muss 
+\[v_e\leq\frac{1}{\sin\left(\frac{\tau}{8}\right)+\cos\left(\frac{\tau}{8}\right)}=\frac{1}{\sqrt{2}}\]
+gelten, um $v\leq1$ zu garantieren. Interessanterweise erhalten wir also im zweidimensionalen Fall eine niedrigeres Geschwindigkeitslimit, wenn wir den Erwartungswert eines Teilchens als die Maßgabe für eine Geschwindigkeitsdefinition wählen. 
+
+Es sei $\pmb{i}=(1,0)$ und $\pmb{j}=(0,1)$. Wir charakterisieren ein Teilchen $\Phi$ mit beliebigem $v_e\in[0;\frac{1}{\sqrt{2}}]$ und $\theta\in[0;\nicefrac{\tau}{4}]$, so erhalten wir für die Charakterisierungsfunktion mit $\psi((x_0,t_0)=1$ für beliebige $x_0\in\N^2$, $t_0\in\Z$, dass 
+\begin{itemize}
+\item $\psi(x_0,\;t_0+1)=1-v_e(\sin(\theta+\cos(\theta))$,
+\item $\psi(x_0-\pmb{i},\;t_0+1)=v_e\cdot\sin(\theta)$,
+\item $\psi(x_0-\pmb{j},\;1t_0+1)=v_e\cdot\cos(\theta)$.
+\end{itemize}
+Dadurch sowie durch Anwendung von Postulat \ref{pos_einstein} auf eine allgemeine Charakterisierungsfunktion $\psi$ erhalten wir also die Rekursionsgleichung
+\begin{align*}
+\begin{split}
+\psi(x,\,t)=\phantom{+}&\psi(x,\;t-1)\cdot(1-v_e(\sin(\theta+\cos(\theta)))\\
++\,&\psi(x-\pmb{i},\;t-1)\cdot(v_e\cdot\sin(\theta))\\
++\,&\psi(x-\pmb{j},\;t-1)\cdot(v_e\cdot\sin(\theta)).
+\end{split} \forall\;x\in\N^2,\,t\in\Z
+\end{align*}
+Damit haben wir die Bewegung von einem $\Phi$ im ersten Quadranten des zweidimensionalen Raums vollständig charakterisiert. Simulationen derartiger Bewegungen befinden sich als Bilderserien im Anhang und können auch im Internet als Animationen abgerufen werden (für weiteres siehe Anhang).
+
+\subsection{Erweiterung des Modells}
+
+\subsubsection{Problematik}
+
+Betrachten wir für ein beliebiges $t\in\Z$ die Varianz der Position
+\[\sigma_x^2:=\sum_{x\in\N^2}|x-\mu_x|^2\cdot\psi(x,t)\]
+mit dem Erwartungswert $\mu_x=\sum_{x\in\N^2}x\cdot\psi(x,t)$. Wir wollen nun die Entwicklung von $\sigma_x^2$ über die Zeit $t$ unter der Startbedingung $\Phi\at{0}(0,0)$ untersuchen. In Abbildung \ref{fig_variance_time} sehen wir dies für verschiedene $\theta$ bei (a) für ein konstantes $v_e=\frac{1}{\sqrt{2}}$ und bei (b) für ein konstantes $v=1$.
+
+In beiden Fällen sehen wir, dass die Varianz über die Zeit linear ansteigt. Vielmehr stellen wir fest, dass die Steigung der Varianz von $\theta$ abhängt. Bei dem konstantem $v$ schwankt sie zwischen 0 und $\frac{1}{2}$; bei dem konstantem $v_e$ schwankt sie zwischen ca. $0,207$ und $\frac{1}{2}$. Die verschiedenen Steigungen in Abhängigkeit von $\theta$ sind auch noch mal deutlich in Abbildung \ref{fig_variance_angle} gegenübergestellt.
+
+Die Varianz sollte sich optimalerweise unabhängig von $\theta$ entwickeln -- bestenfalls wäre die Kurve in Abbildung \ref{fig_variance_angle} also eine horizontale Gerade. Dies ist jedoch nicht der Fall. Durch die Einführung von $v_e$ anstelle von $v$ haben wir den Einfluss von $\theta$ auf die Änderungsrate von $\sigma_x^2$ bereits reduziert, was die Sinnvollkeit dieser Entscheidung nur erneut bestätigt. 
+
+Dennoch wäre das Modell treffender, wenn $\theta$ auf die Entwicklung der Varianz keinen Einfluss hätte, da sich andernfalls in einer derartig konstruierten Welt ein zugrundeliegendes Koordinatensystem feststellen lassen würde, wie es in unserem Universum nicht der Fall ist.
+
+\subsubsection{Neudefinition}
+
+Die im Laufe der Bewegung nicht eindeutig definierte Position, lässt sich auch als \textit{Unschärfe} in der Position bezeichnen. In der Quantenphysik tritt dieses Phänomen auch für die Geschwindigkeit\footnote{genau gesagt für den Impuls; da wir jedoch keine Massen betrachten, können wir den Impuls auf die Geschwindigkeit reduzieren} auf. Letzteres stellen wir in unserem Modell im Gegensatz zur Positionsunschärfe noch nicht fest. Die Geschwindigkeit ist als externe Größe bisher eindeutig gegeben gewesen.
+
+Wir erweitern nun unsere Auffassung einer Charakterisierungsfunktion, so dass wir keine weiteren, externen Variablen mehr außer ihr benötigen.
+
+\begin{postulate}
+Der Zustand eines Teilchens $\Phi$ zum Zeitpunkt $t$ ist vollständig gegeben durch eine Charakterisierungsfunktion $\Psi: \X\times\T\rightarrow\C$ mit
+\[\forall\, x\in\X\quad\forall\, t\in\T:\quad
+P(\Phi\at{t}x)=|\Psi(x,t)|^2.\]
+\end{postulate}
+
+Dieser Schritt ist auch der Grund, warum Definition \ref{def_psi} von mir nicht als Postulat eingestuft wurde. Durch Setzen von $\psi(x,t):=|\Psi(x,t)|^2$ ist jene außerdem immer noch gültig, da ausdrücklich nur die Position charakterisiert wird.
+
+Der Wertebereich der Charakterisierungsfunktion umfasst nun also die komplexen Zahlen. Neben des Betrags eines Funktionswertes von $\Psi$, die wie bereits zuvor die Positionswahrscheinlichkeiten repräsentiert, können nun zusätzlich durch das jeweilige komplexe Argument die ehemaligen Größen $\theta$ und $v_e$ kodiert werden.
+
+Wie erhalten wir die Geschwindigkeit eines Teilchens $\Phi$ aus $\Psi$? In der Quantenphysik wie auch hier geschieht das durch eine \textit{Fourier-Transformation}. Typischerweise bezeichnet dies die Zerlegung eines Signals in der Zeitdomäne in seine Frequenzanteile. In unserem Sinne jedoch zerlegen wir ein Signal in der räumlichen Domäne in \glqq räumliche Frequenzen\grqq. Diese Überlegung und insbesondere der Zusammenhang dieser Frequenzzerlegung mit der Geschwindigkeit ist der einzig schwierig zu hinterfragende Schritt an unserer Konstruktion (für genaueres siehe 2.5).
+
+Die übliche kontinuierliche Fourier-Transformation (FT) ist in unserem Fall aber nicht anwendbar. Das naheliegendste Pendant, die \textit{diskrete Fourier-Transformation (DFT)}, eignet sich auch nicht wegen ihrer Beschränkung auf endliche Definitionsbereiche. Stattdessen verwenden wir die \textit{zeitdiskrete Fourier-Transformation (DTFT)}, die als Grenzwert der DFT entsteht und sich für abzählbar unendliche Sachverhalte wie den unseren eignet. Als DTFT von $\Psi$ erhalten wir (Herleitung siehe %noch einfügen%) 
+\[\widehat{\Psi}(\pmb{\omega},t) = \sum_{\pmb{x}\in\mathbb{N}^2}\Psi(\pmb{x},t)e^{-i\sqrt{2}\tau(\pmb{\omega}\cdot\pmb{x})}\]
+mit $\pmb{x}\in\X=\N^2$,\; $\pmb{\omega}\in[0;\nicefrac{1}{\sqrt{2}}]\times[0;\nicefrac{1}{\sqrt{2}}]$ und $\pmb{\omega}\cdot\pmb{x}$ als Skalarprodukt, wobei $|\pmb{\omega}|\;\widehat{=}\;v$ und der Winkel von $\pmb{\omega}$ zur x-Achse $\theta$ entspräche.
+
+Unsere Rekursionsgleichung lässt sich nun für $\X:=\N^2$ folgendermaßen aufstellen:
+\begin{align*}
+\Psi(\pmb{x},t) = \int_0^{\frac{1}{\sqrt2}}\int_0^{\frac{1}{\sqrt2}} 
+\widehat{\Psi}(\pmb{\omega},t)
+&\left[
+\pmb{\omega}\cdot\left(\Psi(\pmb{x}-\hat{i},t-1),\Psi(\pmb{x}-\hat{j},t-1)\right)
+\right.\\
+&\left.\;+\;(1-|\pmb{\omega}|)\Psi(\pmb{x},t-1)\vphantom{\hat{\Psi}}\right]
+\operatorname{d}\pmb{\omega}. 
+\end{align*}
+
+Löst dies unser Problem aus 2.4? Das kann nicht unmittelbar beurteilt werden: Einerseits haben wir somit keine externe Variable $\theta$, die die Varianz verändert auf eine Weise, wie sie unserer alltäglichen Vorstellung von einem relativistischen Raum widerspricht. Andererseits können wir hinterfragen, ob nicht vielleicht trotzdem eine Korrelation zwischen dem \textit{effektivem} $\theta$, d.h. dem, dass sich aus der DTFT ergibt, und der Varianz auftritt. Nicht zuletzt ist es fraglich, ob in einem diskreten Raum überhaupt die Möglichkeit "gleichwertiger Koordinatensysteme" unter Drehungen abseits von $90^{\,\circ}$-Schritten, d.h. Relativismus, realisierbar ist. 
+
 \subsection{Die Unschärferelation}
+
+Unschärfe tritt in diesem erweiterten Modell also nicht nur für die Position, sondern auch für die Geschwindigkeit auf. Durch den Zusammenhang von $\Psi$ und $\widehat{Psi}$ über die FT, gilt für sie mathematisch ganz natürlich, dass Unschärfeprinzip. Die Varianz beider Größen kann nicht gleichzeitig beliebig klein werden. 
+
+Dies ist keine zufällige Eigenschaft der Natur, sondern eine inhärente Eigenschaft der FT. Ein Beweis dessen befindet sich in Anhang <noch einfügen>. Der einzige physikalische, d.h in gewissem Sinne überraschende Aspekt ist tatsächlich, dass $\Psi$ und $\widehat{\Psi}$, also Position und Geschwindigkeit (bzw. genauer: Impuls), eben durch die FT zusammenhängen.
+
+Den Zusammenhang zwischen der Materiewelle eines Teilchens, d.h. der FT der Position, und dessen Impuls wurde 1924 erstmals von Louis de Broglie postuliert. Auf meiner Suche nach der Begründung für diesen Zusammenhang fand ich größtenteils Erklärungen, die sich darauf runterbrechen ließen, dass es sich dabei, um einen axiomatischen Sachverhalt handele. Ähnlich wie z.B. für die Newton'schen Axiome gebe es keine Möglichkeit eines Beweises; der Unterschied sei nur, dass wir für die Newton'sche Physik ein Intuition haben, da dessen Effekte unseren Gehirn im Laufe der Evolution zum Alltag wurden, während derartige quantenphysikalische Probleme für unsere Gehirne intuitiv nicht verständlich gemacht werden könnten.
+
+Nicht zufriedengestellt 
 
 \section{Perspektive}
 
+
+
 \section{Anhang}
 
-\subsection{Straightforwardness von Beweisen}
+%\subsection{Straightforwardness von Beweisen}
+%
+%Im Laufe der Arbeit wird mehrmals das englische Wort "straightforward" verwendet, um die Auslassung von Beweisen zu begründen. Grob übersetzt bedeutet das Wort "trivial" oder auch "geradlinig durchführbar". Da ich das englische Wort als so treffend, jedwede deutsche Übersetzung jedoch für unpassend empfand, habe ich es wörtlich verwendet. Hier werde ich kurz erläutern, warum und in genau welchen Fällen ich mich dafür entschieden habe Beweise auszulassen.
+%
+%Als \textit{straightforward} bezeichne ich Beweise deren Herausforderung -- wenn sie nicht sowieso trivial sind -- nicht wie häufig in dem Finden einer kreativen bis zu genialen Idee liegt, sondern stattdessen in der Komplexität der Notation. Mathematische Notation ist stets nur der Annäherungsversuch an natürliche bzw. zugrundeliegende Wahrheiten oder Gesetzmäßigkeiten, die schwierig zu fassen sind. Manchmal wirken daher Zusammenhänge durch die Verschleierung der Notation als nicht-trivial, obwohl sie aus anderen Blickwinkeln betrachtet naheliegend bis zu offensichtlich sind. Beispielhaft lässt sich die Kettenregel in der Analysis nennen, die in Differentialquotienten (Leibniz-Notation) dargestellt naheliegend scheint,
+%\[ \frac{\mathrm{d}y}{dx}\frac{dx}{dz} = \frac{dy}{dz},\]
+%in der Lagrange-Notation dagegen nicht,
+%\[ (f\circ g)'(x) = f'(g(x))g'(x). \]
+%Des Weiteren ist der formale Beweis der Kettenregel mittels der h-Methode wesentlich komplizierter als das intuitive Verständnis des zugrundeliegenden Zusammenhangs, ohne jedoch weitere wesentliche Erkenntnis für letzteres zu bieten. Ich möchte nicht behaupten, dass ein genaues Studium diese Beweises überhaupt keine Erkenntnis bieten kann, sondern nur, dass diese Erkenntnis sehr verschlüsselt ist und durch ein anderes Medium wahrscheinlich besser vermittelt werden kann.
+%
+%Keinesfalls möchte ich die Wichtigkeit von Beweisen per se bestreiten und, um mit gutem Gewissen die Wahrheit der in der Arbeit behandelten Sachverhalte behaupten zu können, habe ich jeden der nicht angeführten Beweise selbst ausgearbeitet. Das ist wichtig, denn oft fallen einem im Beweisprozess Ausnahmen und Einschränkungen der zu zeigenden Aussage auf, die man vorher unter Umständen übersehen hatte. Für wahrhaftige Vollständigkeit müsste wohl jeder der ausgelassenen Beweise elaboriert werden, damit unter voller mathematischer Strenge von der Wahrheit der zu beweisenden Aussagen ausgegangen werden kann. 
+%
+%In dieser Arbeit ist dies jedoch nicht das Ziel; stattdessen soll sie dem Leser einen direkteren Mehrwert bieten. Technische Termumformungen u.ä. ohne signifikante Erkenntnis beim erstmaligen Betrachten stören lediglich den Lesefluss sowie die Dichte von relevanter Information in der Arbeit -- mit hoher Wahrscheinlichkeit würden sie in den meisten Fällen sowieso übersprungen werden. Nicht zuletzt auch noch wegen der Längenbeschränkung auf 12 Seiten, habe ich mich daher dazu entschlossen, diejenigen Beweise, die -- in meinen Augen -- straightforward sind, auszulassen.
 
-Im Laufe der Arbeit wird mehrmals das englische Wort "straightforward" verwendet, um die Auslassung von Beweisen zu begründen. Grob übersetzt bedeutet das Wort "trivial" oder auch "geradlinig durchführbar". Da ich das englische Wort als so treffend, jedwede deutsche Übersetzung jedoch für unpassend empfand, habe ich es wörtlich verwendet. Hier werde ich kurz erläutern, warum und in genau welchen Fällen ich mich dafür entschieden habe Beweise auszulassen.
 
-Als \textit{straightforward} bezeichne ich Beweise deren Herausforderung -- wenn sie nicht sowieso trivial sind -- nicht wie häufig in dem Finden einer kreativen bis zu genialen Idee liegt, sondern stattdessen in der Komplexität der Notation. Mathematische Notation ist stets nur der Annäherungsversuch an natürliche bzw. zugrundeliegende Wahrheiten oder Gesetzmäßigkeiten, die schwierig zu fassen sind. Manchmal wirken daher Zusammenhänge durch die Verschleierung der Notation als nicht-trivial, obwohl sie aus anderen Blickwinkeln betrachtet naheliegend bis zu offensichtlich sind. Beispielhaft lässt sich die Kettenregel in der Analysis nennen, die in Differentialquotienten (Leibniz-Notation) dargestellt naheliegend scheint,
-\[ \frac{\mathrm{d}y}{dx}\frac{dx}{dz} = \frac{dy}{dz},\]
-in der Lagrange-Notation dagegen nicht,
-\[ (f\circ g)'(x) = f'(g(x))g'(x). \]
-Des Weiteren ist der formale Beweis der Kettenregel mittels der h-Methode wesentlich komplizierter als das intuitive Verständnis des zugrundeliegenden Zusammenhangs, ohne jedoch weitere wesentliche Erkenntnis für letzteres zu bieten. Ich möchte nicht behaupten, dass ein genaues Studium diese Beweises überhaupt keine Erkenntnis bieten kann, sondern nur, dass diese Erkenntnis sehr verschlüsselt ist und durch ein anderes Medium wahrscheinlich besser vermittelt werden kann.
-
-Keinesfalls möchte ich die Wichtigkeit von Beweisen per se bestreiten und, um mit gutem Gewissen die Wahrheit der in der Arbeit behandelten Sachverhalte behaupten zu können, habe ich jeden der nicht angeführten Beweise selbst ausgearbeitet. Das ist wichtig, denn oft fallen einem im Beweisprozess Ausnahmen und Einschränkungen der zu zeigenden Aussage auf, die man vorher unter Umständen übersehen hatte. Für wahrhaftige Vollständigkeit müsste wohl jeder der ausgelassenen Beweise elaboriert werden, damit unter voller mathematischer Strenge von der Wahrheit der zu beweisenden Aussagen ausgegangen werden kann. 
-
-In dieser Arbeit ist dies jedoch nicht das Ziel; stattdessen soll sie dem Leser einen direkteren Mehrwert bieten. Technische Termumformungen u.ä. ohne signifikante Erkenntnis beim erstmaligen Betrachten stören lediglich den Lesefluss sowie die Dichte von relevanter Information in der Arbeit -- mit hoher Wahrscheinlichkeit würden sie in den meisten Fällen sowieso übersprungen werden. Nicht zuletzt auch noch wegen der Längenbeschränkung auf 12 Seiten, habe ich mich daher dazu entschlossen, diejenigen Beweise, die -- in meinen Augen -- straightforward sind, auszulassen.
 
 \subsection{Abbildungen}
+
+\begin{figure}[h]%
+    \centering
+    \subfloat[Für konstantes $v_e$]{{\includegraphics[width=6.5cm]{varianz-zeit_konstantes_v_e.png} }}%
+    \qquad
+    \subfloat[Für konstantes $v$]{{\includegraphics[width=6.5cm]{varianz-zeit_konstantes_v.png} }}%
+    \caption{Varianz $\sigma_x$ im Verlauf der Zeit $t$}%
+    \label{fig_variance_time}%
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=8cm]{varianz-winkel.png}
+\caption{$\frac{\operatorname{d}\sigma_x^2}{\operatorname{d}t}$ in Abhängigkeit von $\theta$}
+\label{fig_variance_angle}
+\end{figure}
 
 \subsection{Literatur}
 
