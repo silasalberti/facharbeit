@@ -12,6 +12,7 @@
 \usepackage{nicefrac}
 
 \usepackage[shortlabels]{enumitem}
+\usepackage{setspace}
 
 \usepackage{graphicx}
 \usepackage{subfig}
@@ -34,7 +35,7 @@
 \newtheorem{corollary}{Korollar}
 
 % Line spacing
-\renewcommand{\baselinestretch}{1.5} 
+\renewcommand{\baselinestretch}{1.435} 
 
 \newcommand{\Z}{\mathbb{Z}}
 \newcommand{\C}{\mathbb{C}}
@@ -84,15 +85,11 @@ die in der Schleifenquantengravitation die diskrete Grundeinheit der Zeit ist. D
 
 Ohne Anspruch auf physikalische Treffsicherheit spielt diese Arbeit mit dem Konzept von diskreten Raum- und Zeiteinheiten unter der Annahme, dass die nicht unterschritten werden können. Wir werden grundlegende Teilchenbewegungen modellieren mit dem Ziel, herauszufinden, welche Implikationen diese Diskretheit birgt. 
 
-Ich möchte nochmals betonen, dass ich keinesfalls behaupte, von den physikalischen Details auch nur annähernd Ahnung zu haben -- die tatsächliche moderne Quantenphysik ist wesentlich komplexer. Es handelt sich hierbei um rein mathematische Überlegungen, die keinen Zusammenhang zu echten physikalischen Phänomenen anstreben. Das Ziel ist es sich dem Konzept des Diskreten zu Nähern und herauszufinden, was für Folgen dies unter anderem haben könnte. % Erster und letzter Satz überarbeiten %
-
-Im Laufe der Arbeit werde ich öfters Parallelen zu quantenphysikalischen Phänomenen ziehen, die eher als Anekdote zu sehen sind. %Ausführen%
-
-\subsection{Die Heisenberg'sche Unschärferelation}
+%\subsection{Die Heisenberg'sche Unschärferelation}
 
 % Vorstellen %
 
-\[\sigma_x \sigma_p \geq \frac{\hbar}{2}\]
+%\[\sigma_x \sigma_p \geq \frac{\hbar}{2}\]
 
 \section{Hauptteil}
 
@@ -100,6 +97,7 @@ Begeben wir uns also auf die tiefstmögliche Ebene. Im Zentrum der folgenden Üb
 
 Im Folgenden werden wir die Konzepte \textit{Ort} und \textit{Zeit} benötigen. Bevor wir deren Struktur konkretisieren, betrachten wir sie erstmal als abstrakte Konzepte. Die folgenden Definitionen sind nicht ausreichend, um Bewegungen eines Teilchens eine vollständige Grundlage zu bieten; es fehlen Konzepte wie Distanz und Richtung. Dennoch wollen wir bereits eine Auffassung von Benachbarung im Raum und Aufeinanderfolgen in Zeit schaffen, da diese Zusammenhänge in unserem Modell das Konzept des "Abstandes" von Planck-Länge bzw. Planck-Zeit umsetzen.
 
+{\setstretch{1.0}
 \begin{definition}\label{def_ortundzeit}
 \begin{enumerate}[(a)]
 	\item Wir können eine Menge $\X$ als \textbf{diskreter Raum} 	bezeichnen, wenn sie maximal abzählbar unendlich ist, d.h. 			wenn
@@ -116,6 +114,7 @@ Im Folgenden werden wir die Konzepte \textit{Ort} und \textit{Zeit} benötigen. 
 	und außerdem eine \textbf{Nachfolgerfunktion} $\mu: \T 				\rightarrow \T$ existiert, wobei $\forall \,t\in\T: \;\mu(t)		\neq t$. Ein $t\in\T$ bezeichnen wir als \textbf{Zeitpunkt}.
 \end{enumerate}
 \end{definition} %Geordnetheit, etc. %
+}
 
 So wird $\X$ in der Praxis z.B. ein durch ganzzahlige, kartesische Koordinaten beschreibbarer euklidischer Raum\footnote{In der Realität ist der Raum wahrscheinlich nicht euklidisch (vgl. Raumkrümmung in der Relativitätstheorie).} sein. Die Zeit $\T$ werden wir im Laufe dieser Arbeit durch die ganzen Zahlen umsetzen, wobei $\mu(t):=t+1$ sei.
 
@@ -124,11 +123,13 @@ So wird $\X$ in der Praxis z.B. ein durch ganzzahlige, kartesische Koordinaten b
 
 % Definition von Teilchen selbst?%
 
+{\setstretch{1.0}
 \begin{definition}
 Es sei $\Phi$ ein \textbf{Teilchen}. Des Weiteren bezeichne $x\in\X$ eine Position und $t\in\T$ einen Zeitpunkt. Wir sagen
 \[\Phi \at{t} x,\]
 wenn sich $\Phi$ an der Position $x$ zum Zeitpunkt $t$ befindet.
 \end{definition}
+}
 
 \subsection{Grundprinzipien}
 
@@ -137,6 +138,7 @@ Der Nachfolger eines Zeitpunkts, ist ein Zeitpunkt in einer Planck-Zeit Abstand.
 \[c=\frac{l_P}{t_P},\]
 wobei $c$ die Lichtgeschwindigkeit ist. Die in der Physik gemeinhin akzeptierte Annahme, dass die Lichtgeschwindigkeit nicht überschritten werden kann, übersetzen wir mit Postulat \ref{pos_lightspeed} in unser mathematisches Modell.
 
+{\setstretch{1.0}
 \begin{postulate}\label{pos_lightspeed}
 Es sei $\Phi$ ein Teilchen. Des Weiteren gelte für ein $x_0\in\X$ und ein $t\in\T$
 \[\Phi \at{t} x_0.\]
@@ -144,6 +146,7 @@ Wenn für ein $x_1\in\X$
 \[\Phi \at{\mu(t)} x_1\]
 gilt, dann muss $\delta(x_0,x_1)=1$ oder $x_0=x_1$ gelten.
 \end{postulate}
+}
 
 Dieses Geschwindigkeitslimit bezeichnen wir im Folgenden als \textit{Maximalgeschwindigkeit}, um nicht das Wort Lichtgeschwindigkeit verwenden zu müssen.
 
@@ -174,16 +177,20 @@ So sagen wir nun also: Mit einer Wahrscheinlichkeit von $\frac{1}{2}$ befindet s
 
 Im Folgenden werden wir uns allerdings gar nicht dafür interessieren, an welcher Position sich $\Phi$ zum Zeitpunkt 1 letztlich befinden wird; uns interessiert lediglich mit welcher Wahrscheinlichkeit es sich wo befindet. Eine Interpretation der Quantemechanik besagt, dass für bestimmte Objekte mit probabilistischen Eigenschaften -- ähnlich zu denen unseres Teilchens -- sich ohne "Messung" gar nicht erst entscheidet, welche der verschiedenen möglichen Eigenschaften das betrachte Objekt tatsächlich einnimmt; es befindet sich in einer \textit{Superposition} aus den verschiedenen Möglichkeiten. Genauso können wir sagen, dass $\Phi$ zum Zeiptunkt 1 in einer Superposition der Positionen 0 und 1 ist.
 
+{\setstretch{1.0}
 \begin{definition}\label{def_psi}
 Die Position eines Teilchen $\Phi$ sei vollständig charakterisiert durch eine Charakterisierungsfunktion $\psi: \X\times\T \rightarrow [0;1]$ mit
 \[\forall\, x\in\X\quad\forall\, t\in\T:\quad
 P(\Phi\at{t}x)=\psi(x,t).\]
 \end{definition}
+}
 
+{\setstretch{1.0}
 \begin{corollary}\label{cor_summe}
 Da es sich bei gegebenem $t$ bei $\psi$ um eine Wahrscheinlichkeitsverteilung in $x$ handelt, gilt
 \[\sum_{x\in\X} \psi(x,t)=1 \quad\forall\,t\in\T.\]
 \end{corollary}
+}
 
 Aufgrund von Korollar \ref{cor_summe} betrachten wir von nun an bei einem gegebenen Zeitpunkt $t_0$ nur noch die Werte von $\psi$ mit $\psi(x,t_0)\neq0$. Alle anderen Werte seien dann implizit 0.
 
@@ -191,11 +198,13 @@ Wir wissen also, dass bei einer Geschwindigkeit von $\frac{1}{2}$  eben $\psi(0,
 
 Dieses Problem könnte durch eine weitere Variable gelöst werden, die zum Zeitpunkt 1 variiert wird, je nach dem, ob sich bewegt wurde oder nicht. Diese könnte dann für den Zeitpunkt 2 zur Entscheidung zwischen Bewegen und Nichtbewegen genutzt werden. Wir entscheiden uns jedoch bewusst gegen eine solche Variable und betrachten dagegen die Folgerungen, die der Verzicht auf eine solche bietet.
 
+{\setstretch{1.0}
 \begin{postulate}\label{pos_einstein}
 Es sei $\psi$ eine Charakterisierungsfunktion, für die beliebige Gesetzesmäßigkeiten gelten. Dann gelte für alle Charakterisierungsfunktionen $\psi_0$ und $\psi_1$ dieselben Gesetzesmäßigkeiten insofern sie
 \[\psi(x,t)=a\cdot\psi_0(x,t)+b\cdot\psi_1(x,t)\quad\forall\,x\in\X\;\;\forall\,t \in\T\]
 mit $a,b\in[0,1]$ und $a+b=1$ erfüllen.
 \end{postulate}
+}
 
 Wir können also unsere Funktion $\psi$ in $\psi_0$ mit $\psi_0(0,1)=1$ und $\psi_1$ mit $\psi_1(1,1)=1$ für $a=b=\frac{1}{2}$ aufteilen. Es gilt unter Anwendung derselben Gesetzesmäßigkeiten, wie wir bei $\psi$ verwendeten, für $\psi_0$, dass $\psi_0(0,2)=\frac{1}{2}$ und $\psi_0(1,2)=\frac{1}{2}$ und für $\psi_1$, dass $\psi_1(1,2)=\frac{1}{2}$ und $\psi_1(2,2)=\frac{1}{2}$. 
 
@@ -248,11 +257,14 @@ Wegen $v\leq1$, erhalten wir $v_e\leq\frac{1}{\sin(\theta)+\cos(\theta)}$. Der N
 gelten, um $v\leq1$ zu garantieren. Interessanterweise erhalten wir also im zweidimensionalen Fall eine niedrigeres Geschwindigkeitslimit, wenn wir den Erwartungswert eines Teilchens als die Maßgabe für eine Geschwindigkeitsdefinition wählen. 
 
 Es sei $\pmb{i}=(1,0)$ und $\pmb{j}=(0,1)$. Wir charakterisieren ein Teilchen $\Phi$ mit beliebigem $v_e\in[0;\frac{1}{\sqrt{2}}]$ und $\theta\in[0;\nicefrac{\tau}{4}]$, so erhalten wir für die Charakterisierungsfunktion mit $\psi((x_0,t_0)=1$ für beliebige $x_0\in\N^2$, $t_0\in\Z$, dass 
+
+{\setstretch{1.0}
 \begin{itemize}
 \item $\psi(x_0,\;t_0+1)=1-v_e(\sin(\theta+\cos(\theta))$,
 \item $\psi(x_0-\pmb{i},\;t_0+1)=v_e\cdot\sin(\theta)$,
 \item $\psi(x_0-\pmb{j},\;1t_0+1)=v_e\cdot\cos(\theta)$.
 \end{itemize}
+}
 Dadurch sowie durch Anwendung von Postulat \ref{pos_einstein} auf eine allgemeine Charakterisierungsfunktion $\psi$ erhalten wir also die Rekursionsgleichung
 \begin{align*}
 \begin{split}
@@ -283,11 +295,13 @@ Die im Laufe der Bewegung nicht eindeutig definierte Position, lässt sich auch 
 
 Wir erweitern nun unsere Auffassung einer Charakterisierungsfunktion, so dass wir keine weiteren, externen Variablen mehr außer ihr benötigen.
 
+{\setstretch{1.0}
 \begin{postulate}
 Der Zustand eines Teilchens $\Phi$ zum Zeitpunkt $t$ ist vollständig gegeben durch eine Charakterisierungsfunktion $\Psi: \X\times\T\rightarrow\C$ mit
 \[\forall\, x\in\X\quad\forall\, t\in\T:\quad
 P(\Phi\at{t}x)=|\Psi(x,t)|^2.\]
 \end{postulate}
+}
 
 Dieser Schritt ist auch der Grund, warum Definition \ref{def_psi} von mir nicht als Postulat eingestuft wurde. Durch Setzen von $\psi(x,t):=|\Psi(x,t)|^2$ ist jene außerdem immer noch gültig, da ausdrücklich nur die Position charakterisiert wird.
 
@@ -312,19 +326,17 @@ Unsere Rekursionsgleichung lässt sich nun für $\X:=\N^2$ folgendermaßen aufst
 
 Löst dies unser Problem aus 2.4? Das kann nicht unmittelbar beurteilt werden: Einerseits haben wir somit keine externe Variable $\theta$, die die Varianz verändert auf eine Weise, wie sie unserer alltäglichen Vorstellung von einem relativistischen Raum widerspricht. Andererseits können wir hinterfragen, ob nicht vielleicht trotzdem eine Korrelation zwischen dem \textit{effektivem} $\theta$, d.h. dem, dass sich aus der DTFT ergibt, und der Varianz auftritt. Nicht zuletzt ist es fraglich, ob in einem diskreten Raum überhaupt die Möglichkeit "gleichwertiger Koordinatensysteme" unter Drehungen abseits von $90^{\,\circ}$-Schritten, d.h. Relativismus, realisierbar ist. 
 
-\subsection{Die Unschärferelation}
+\subsection{Die Unschärferelation -- ein Fazit}
 
-Unschärfe tritt in diesem erweiterten Modell also nicht nur für die Position, sondern auch für die Geschwindigkeit auf. Durch den Zusammenhang von $\Psi$ und $\widehat{Psi}$ über die FT, gilt für sie mathematisch ganz natürlich, dass Unschärfeprinzip. Die Varianz beider Größen kann nicht gleichzeitig beliebig klein werden. 
+Unschärfe tritt in diesem erweiterten Modell also nicht nur für die Position, sondern auch für die Geschwindigkeit auf. Durch den Zusammenhang von $\Psi$ und $\widehat{\Psi}$ über die FT, gilt für sie mathematisch ganz natürlich, dass Unschärfeprinzip. Die Varianz beider Größen kann nicht gleichzeitig beliebig klein werden. 
 
 Dies ist keine zufällige Eigenschaft der Natur, sondern eine inhärente Eigenschaft der FT. Ein Beweis dessen befindet sich in Anhang <noch einfügen>. Der einzige physikalische, d.h in gewissem Sinne überraschende Aspekt ist tatsächlich, dass $\Psi$ und $\widehat{\Psi}$, also Position und Geschwindigkeit (bzw. genauer: Impuls), eben durch die FT zusammenhängen.
 
-Den Zusammenhang zwischen der Materiewelle eines Teilchens, d.h. der FT der Position, und dessen Impuls wurde 1924 erstmals von Louis de Broglie postuliert. Auf meiner Suche nach der Begründung für diesen Zusammenhang fand ich größtenteils Erklärungen, die sich darauf runterbrechen ließen, dass es sich dabei, um einen axiomatischen Sachverhalt handele. Ähnlich wie z.B. für die Newton'schen Axiome gebe es keine Möglichkeit eines Beweises; der Unterschied sei nur, dass wir für die Newton'sche Physik ein Intuition haben, da dessen Effekte unseren Gehirn im Laufe der Evolution zum Alltag wurden, während derartige quantenphysikalische Probleme für unsere Gehirne intuitiv nicht verständlich gemacht werden könnten.
+Den Zusammenhang zwischen der Materiewelle eines Teilchens, d.h. der FT der Position, und dessen Impuls wurde 1924 erstmals von Louis de Broglie postuliert. Auf meiner Suche nach der Begründung für diesen Zusammenhang fand ich größtenteils Erklärungen, die sich darauf runterbrechen ließen, dass es sich dabei um einen axiomatischen Sachverhalt handele. Ähnlich wie z.B. für die Newton'schen Axiome\footnote{genau gesagt, wie bei Axiomen generell natürlich} gebe es keine Möglichkeit eines Beweises; der Unterschied sei nur, dass wir eben z.B. für die Newton'sche Physik ein Intuition haben, da dessen Effekte unseren Gehirn im Laufe der Evolution zum Alltag wurden -- im Gegensatz zu den alltagsfernen, quantenphysikalischen Effekten, die uns unnatürlich wirken.
 
-Nicht zufriedengestellt 
+Nicht zufriedengestellt davon, habe ich mich dem Originalwerk zugewandt. De Broglie selbst führt sein Postulat folgendermaßen ein: "Man könnte sich vorstellen, dass -- wegen eines Meta-Gesetzes der Natur -- zu jeder Portion Energie ein periodisches Phänomen einer Frequenz zuzuordnen ist."\footnote{übersetzt nach S.9} Die Sinnvollheit dieser vergleichsweise überraschend auftretenden Vermutung begründet er dann anhand derer Folgen -- und nicht umgekehrt. Des Weiteren sind Phänomene der Relativitätstheorie für seine Überlegungen elementar, weswegen in unserem Kontext kein Gewinn daraus gezogen werden kann.
 
-\section{Perspektive}
-
-
+Vielleicht bieten die Problematiken unseres Modells ohne die Einführung von $\widehat{\Psi}$ als FT der Position (vgl. 2.4) einen Anstoß, warum die de-Broglie-Relation vielleicht gar nicht so unnatürlich ist. Und sobald dies der Fall ist, ist auch die Unschärferelation nicht mehr ein absurdes Phänomen einer realitätsfernen Theorie, sondern eine inhärente Folge eines Universums, das widerspruchsfrei unsere Realität fassen kann. 
 
 \section{Anhang}
 
