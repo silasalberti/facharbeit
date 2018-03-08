@@ -318,18 +318,18 @@ Der Wertebereich der Charakterisierungsfunktion umfasst nun also die komplexen Z
 Wie erhalten wir die Geschwindigkeit eines Teilchens $\Phi$ aus $\Psi$? In der Quantenphysik wie auch hier geschieht das durch eine \textit{Fourier-Transformation}. Typischerweise bezeichnet dies die Zerlegung eines Signals in der Zeitdomäne in seine Frequenzanteile. In unserem Sinne jedoch zerlegen wir ein Signal in der räumlichen Domäne in \glqq räumliche Frequenzen\grqq. Diese Überlegung und insbesondere der Zusammenhang dieser Frequenzzerlegung mit der Geschwindigkeit ist der einzig schwierig zu hinterfragende Schritt an unserer Konstruktion (für genaueres siehe 2.5).
 
 Die übliche kontinuierliche Fourier-Transformation (FT) ist in unserem Fall aber nicht anwendbar. Das naheliegendste Pendant, die \textit{diskrete Fourier-Transformation (DFT)}, eignet sich auch nicht wegen ihrer Beschränkung auf endliche Definitionsbereiche. Stattdessen verwenden wir die \textit{zeitdiskrete Fourier-Transformation (DTFT)}, die als Grenzwert der DFT entsteht und sich für abzählbar unendliche Sachverhalte wie den unseren eignet \cite{wiki:dft}, \cite{wiki:dtft}. Als DTFT von $\Psi$ erhalten wir (Herleitung siehe im Anhang 3.1) 
-\[\widehat{\Psi}(\pmb{\omega},t) = \sum_{\pmb{x}\in\mathbb{N}^2}\Psi(\pmb{x},t)e^{-i\sqrt{2}\tau(\pmb{\omega}\cdot\pmb{x})}\]
-mit $\pmb{x}\in\X=\N^2$,\; $\pmb{\omega}\in[0;\nicefrac{1}{\sqrt{2}}]\times[0;\nicefrac{1}{\sqrt{2}}]$ und $\pmb{\omega}\cdot\pmb{x}$ als Skalarprodukt, wobei $|\pmb{\omega}|\;\widehat{=}\;v$ und der Winkel von $\pmb{\omega}$ zur x-Achse $\theta$ entspräche.
+\[\widehat{\Psi}(\pmb{v},t) = \sum_{\pmb{x}\in\mathbb{N}^2}\Psi(\pmb{x},t)e^{-i\tau(\pmb{v}\cdot\pmb{x})}\]
+mit $\pmb{x}\in\X=\N^2$,\; $\pmb{v}\in[0;1]\times[0;1]$ und $\pmb{v}\cdot\pmb{x}$ als Skalarprodukt, wobei $|\pmb{v}|$ unserem ehemaligen $v_e$ und der Winkel von $\pmb{v}$ zur x-Achse dem ehemaligen $\theta$ entspräche.
 
 Unsere Rekursionsgleichung lässt sich nun für $\X:=\N^2$ folgendermaßen aufstellen:
 \begin{align*}
-\Psi(\pmb{x},t) = \int_0^{\frac{1}{\sqrt2}}\int_0^{\frac{1}{\sqrt2}} 
-\widehat{\Psi}(\pmb{\omega},t)
-&\left[
-\pmb{\omega}\cdot\left(\Psi(\pmb{x}-\pmb{i},t-1),\Psi(\pmb{x}-\pmb{j},t-1)\right)
+\Psi(\pmb{x},t) = \int_0^{1}\int_0^{1} 
+\widehat{\Psi}(\pmb{v},t)
+&\left[\vphantom{\hat{\Psi}}
+\pmb{v}\cdot\left(\Psi(\pmb{x}-\pmb{i},t-1),\Psi(\pmb{x}-\pmb{j},t-1)\right)
 \right.\\
-&\left.\;+\;(1-|\pmb{\omega}|)\Psi(\pmb{x},t-1)\vphantom{\hat{\Psi}}\right]
-\operatorname{d}\pmb{\omega}. 
+&\left.\;+\;(1-|\pmb{v}|)\Psi(\pmb{x},t-1)\vphantom{\hat{\Psi}}\right]
+\operatorname{d}\pmb{v}. 
 \end{align*}
 
 Löst dies unser Problem aus 2.4.1? Das kann nicht unmittelbar beurteilt werden: Einerseits haben wir somit keine externe Variable $\theta$, die die Varianz verändert auf eine Weise, wie sie unserer alltäglichen Vorstellung von einem relativistischen Raum widerspricht. Andererseits können wir hinterfragen, ob nicht vielleicht trotzdem eine Korrelation zwischen dem \textit{effektivem} $\theta$, d.h. dem, dass sich aus der DTFT ergibt, und der Varianz auftritt. Nicht zuletzt ist es fraglich, ob in einem diskreten Raum überhaupt die Möglichkeit "gleichwertiger Koordinatensysteme" unter Drehungen abseits von $90^{\,\circ}$-Schritten, d.h. Relativismus, realisierbar ist. 
@@ -364,7 +364,7 @@ mit $\pmb{n}\cdot\pmb{f}$ als Skalarprodukt. Wenn wir jetzt $N_1$ und $N_2$ gege
 \[X_{\pmb{f}}:=\sum_{\pmb{n}\in\N^2}=e^{-i\tau(\pmb{n}\cdot\pmb{f})}x_{\pmb{n}}\]
 mit $\pmb{f}=(f_1,f_2)$, wobei $f_1$ und $f_2$ kontinuierliche Variablen im Intervall $[0;1]$ sind, denn sie entstehen aus $\frac{k_l}{N_l}$ mit $k_l=1,\dots N_l$, wenn $N_l\rightarrow\infty$, für $l=1,2$.
 
-Wie können wir $\pmb{f}$ nun als Geschwindigkeit interpretieren? Vorher, d.h. in 2.3, hatten wir eine Geschwindigkeit angegeben durch einen Skalar $v_e$ und einen Winkel $\theta$. Der Betrag unseres Vektors $\pmb{f}$ könnte nun -- auf irgendeine Weise -- $v_e$ darstellen und dessen Winkel zur x-Achse $\theta$. Letzter Zusammenhang ist sogar ziemlich eindeutig. Ersterer allerdings
+Wie können wir $\pmb{f}$ nun als Geschwindigkeit interpretieren? Vorher, d.h. in 2.3, hatten wir eine Geschwindigkeit angegeben durch einen Skalar $v_e$ und einen Winkel $\theta$. Naheliegend ist es also durch den Betrag unseres Vektors $\pmb{f}$ einfach unser ehemaliges $v_e$ darzustellen und durch dessen Winkel zur x-Achse unser ehemaliges $\theta$.\pagebreak
 
 %\subsection{Straightforwardness von Beweisen}
 %
@@ -389,7 +389,7 @@ Die Abbildungen wurden allesamt in \texttt{Python} mittels der Bibliotheken \tex
 Die Visualisierungen der Bewegungen (Abbildung 3 und 4) funktionieren derart, dass die Wahrscheinlichkeiten eines Teilchens an einer bestimmten Position zu sein durch die Farben von schwarz bis weiß signalisiert sind. Wobei die Farbe schwarz der höchsten Wahrscheinlichkeit und die Farbe weiß der Wahrscheinlichkeit von 0 zugeordnet wird, und die Graustufen linear über alle Wahrscheinlichkeiten dazwischen.
 
 }
-
+\vspace{2cm}
 \begin{figure}[H]%
     \centering
     \subfloat[Für konstantes $v_e$]{{\includegraphics[width=6.5cm]{varianz-zeit_konstantes_v_e.png} }}%
@@ -398,14 +398,14 @@ Die Visualisierungen der Bewegungen (Abbildung 3 und 4) funktionieren derart, da
     \caption{Varianz $\sigma_x^2$ im Verlauf der Zeit $t$}%
     \label{fig_variance_time}%
 \end{figure}
-
+\vspace{1cm}
 \begin{figure}[H]
 \centering
 \includegraphics[width=8cm]{varianz-winkel.png}
 \caption{$\frac{\operatorname{d}\sigma_x^2}{\operatorname{d}t}$ in Abhängigkeit von $\theta$}
 \label{fig_variance_angle}
 \end{figure}
-
+\vspace{2cm}
 \begin{figure}[h]
 \centering
 \includegraphics[width=10cm]{movement-trace-30-deg-1-speed.png}
