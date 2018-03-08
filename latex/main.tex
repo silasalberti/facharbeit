@@ -219,9 +219,9 @@ Mittels mehrfachen Anwendens von Postulat \ref{pos_einstein} kann man $\psi$ auc
 
 \subsubsection{Allgemeine Geschwindigkeit}
 
-Für eine Geschwindigkeit $v$ eines Teilchens muss gelten $|v|\leq 1$. Eine negative Geschwindigkeit könnte in diesem Kontext als Bewegung in negative x-Richtung aufgefasst werden, allerdings beschränken wir uns der Einfachheit auf den positiven Fall. Der negative Fall würde analog, nur mit anderen Vorzeichen, funktionieren, und eine Beachtung dessen würde die Komplexität der Gleichungen, nicht aber nicht die anzustrebende Einsicht erhöhen.
+Für eine Geschwindigkeit $v$ eines Teilchens muss gelten $|v|\leq 1$. Eine negative Geschwindigkeit könnte in diesem Kontext als Bewegung in negative x-Richtung aufgefasst werden, allerdings beschränken wir uns der Einfachheit auf den positiven Fall. Der negative Fall würde analog, nur mit anderen Vorzeichen, funktionieren, und eine Beachtung dessen würde die Komplexität der Gleichungen, nicht aber die anzustrebende Einsicht erhöhen.
 
-Naheliegend ist nun die Gesetzesmäßigkeit, dass bei gegebenem $v\geq0$, $x_0$ und $t_0$ mit $\psi(x_0,t_0)=1$ gilt, dass $\psi(x_0,t_0+1)=1-v$ und $\psi(x_0+1,t_0+1)=v$. So befindet sich der Erwartungswerten von $\psi$ für $t=t_0+1$ bei $x=x_0+v$. Innerhalb einer Zeiteinheit hat sich das Teilchen durchschnittlich also um $v$ bewegt. 
+Naheliegend ist nun die Gesetzesmäßigkeit, dass bei gegebenem $v\geq0$, $x_0$ und $t_0$ mit $\psi(x_0,t_0)=1$ gilt, dass $\psi(x_0,t_0+1)=1-v$ und $\psi(x_0+1,t_0+1)=v$. So befindet sich der Erwartungswert von $\psi$ für $t=t_0+1$ bei $x=x_0+v$. Innerhalb einer Zeiteinheit hat sich das Teilchen durchschnittlich also um $v$ bewegt. 
 
 Durch mehrfache Anwendung von Postulat \ref{pos_einstein} erhält man die Rekursionsgleichung
 
@@ -243,7 +243,7 @@ Es lässt sich leicht beweisen, dass der Erwartungswert von $\psi$ zum Zeitpunkt
 
 Ein zweidimensionaler, diskreter Raum könnte zum Beispiel durch $\X=\Z^2$ dargestellt werden. Ähnlich wie wir es im eindimensionalen Fall hatten, beschränken wir uns in dieser Arbeit der Übersichtlichkeit halber allerdings auf den 1. Quadranten, d.h. beide Komponenten einer Position seien positiv. 
 
-Es sei also $\X=\N^2$ und $\T=\Z$. Die Position eines Teilchens gibt ein Vektor $\pmb{x}=(x,y)$ mit $x,y\in\N$. Wir stellen uns eine übliche euklidische Ebene mit x- und y-Achse vor. Neben der Geschwindigkeit $v\in[0;1]$ muss nun für die Bewegung eines Teilchens ebenfalls eine Richtung $\theta\in[0;\nicefrac{\tau}{4}]$ mit $\tau:=2\pi$ gegeben sein.
+Es sei also $\X=\N^2$ und $\T=\Z$. Die Position eines Teilchens ist gegeben durch einen Vektor $\pmb{x}=(x,y)$ mit $x,y\in\N$. Wir stellen uns eine übliche euklidische Ebene mit x- und y-Achse vor. Neben der Geschwindigkeit $v\in[0;1]$ muss für die Bewegung eines Teilchens ebenfalls eine Richtung $\theta\in[0;\nicefrac{\tau}{4}]$ mit $\tau:=2\pi$ gegeben sein.
 
 Betrachten wir nun zuerst den Fall $\theta=\nicefrac{\tau}{8}\;\widehat{=}\;45^{\,\circ}$. Außerdem gelte $\Phi\at{0} (0,0)$. Zum Zeitpunkt 1 kann $\Phi$ sich aufgrund unserer Grundvoraussetzung der maximalen Bewegung um eine Längeneinheit pro Zeitschritt nicht auf Position $(1,1)$ befinden, was der geringsten, eindeutigen Bewegung im $45^{\,\circ}$-Winkel entspräche.
 
@@ -260,9 +260,9 @@ Geschwindigkeit können wir nun noch umsetzen, indem wir -- analog zum eindimens
 Wir wollen allerdings Geschwindigkeiten nicht derart charakterisieren, dass die dann tatsächlich zurückgelegte Distanz -- am Betrag des Erwartungswerts gemessen -- zusätzlich noch von $\theta$ abhängt, da dies mit der Auffassung von Bewegungen in der Realität nicht übereinstimmt. Daher charakterisieren wir unser Teilchen durch die 
 Erwartungswertgeschwindigkeit $v_e:=\frac{v}{\sin(\theta)+\cos(\theta)}.$ 
 
-Wegen $v\leq1$, erhalten wir $v_e\leq\frac{1}{\sin(\theta)+\cos(\theta)}$. Der Nenner auf der rechten Seite wird maximal für $\theta=\nicefrac{\tau}{8}$, wie sich durch Ableiten feststellen lässt. Da wir ein $v_e$ unabhängig von $\theta$ wählen können wollen, muss 
+Wegen $v\leq1$, erhalten wir $v_e\leq\frac{1}{\sin(\theta)+\cos(\theta)}$. Der Nenner auf der rechten Seite wird maximal für $\theta=\nicefrac{\tau}{8}$, wie sich durch Ableiten feststellen lässt. Da wir anstreben ein $v_e$ unabhängig von $\theta$ wählen zu können, muss 
 \[v_e\leq\frac{1}{\sin\left(\frac{\tau}{8}\right)+\cos\left(\frac{\tau}{8}\right)}=\frac{1}{\sqrt{2}}\]
-gelten, um $v\leq1$ zu garantieren. Interessanterweise erhalten wir also im zweidimensionalen Fall eine niedrigeres Geschwindigkeitslimit, wenn wir den Erwartungswert eines Teilchens als die Maßgabe für eine Geschwindigkeitsdefinition wählen. 
+gelten, um $v\leq1$ zu garantieren. Interessanterweise erhalten wir also im zweidimensionalen Fall ein niedrigeres Geschwindigkeitslimit, wenn wir den Erwartungswert eines Teilchens als die Maßgabe für eine Geschwindigkeitsdefinition wählen. 
 
 Es sei $\pmb{i}=(1,0)$ und $\pmb{j}=(0,1)$. Wir charakterisieren ein Teilchen $\Phi$ mit beliebigem $v_e\in[0;\frac{1}{\sqrt{2}}]$ und $\theta\in[0;\nicefrac{\tau}{4}]$, so erhalten wir für die Charakterisierungsfunktion mit $\psi(\pmb{x_0},t_0)=1$ für beliebige $\pmb{x_0}\in\N^2$, $t_0\in\Z$, dass 
 
@@ -274,6 +274,7 @@ Es sei $\pmb{i}=(1,0)$ und $\pmb{j}=(0,1)$. Wir charakterisieren ein Teilchen $\
 \end{itemize}
 }
 Dadurch sowie durch Anwendung von Postulat \ref{pos_einstein} auf eine allgemeine Charakterisierungsfunktion $\psi$ erhalten wir also die Rekursionsgleichung
+
 \begin{align*}
 \begin{split}
 \psi(\pmb{x},\,t)=\phantom{+}&\psi(\pmb{x},\;t-1)\cdot(1-v_e(\sin(\theta)+\cos(\theta)))\\
@@ -281,6 +282,7 @@ Dadurch sowie durch Anwendung von Postulat \ref{pos_einstein} auf eine allgemein
 +\,&\psi(\pmb{x}-\pmb{j},\;t-1)\cdot(v_e\cdot\sin(\theta)).
 \end{split} \forall\;\pmb{x}\in\N^2,\,t\in\Z
 \end{align*}
+
 Damit haben wir die Bewegung von einem $\Phi$ im ersten Quadranten des zweidimensionalen Raums vollständig charakterisiert. Simulationen derartiger Bewegungen befinden sich als Bilderserien im Anhang und können auch im Internet als Animationen abgerufen werden (für weiteres siehe Anhang).
 
 \subsection{Erweiterung des Modells}
@@ -289,11 +291,11 @@ Damit haben wir die Bewegung von einem $\Phi$ im ersten Quadranten des zweidimen
 
 Betrachten wir für ein beliebiges $t\in\Z$ die Varianz der Position
 \[\sigma_x^2:=\sum_{\pmb{x}\in\N^2}|\pmb{x}-\mu_x|^2\cdot\psi(\pmb{x},t)\]
-mit dem Erwartungswert $\mu_x=\sum_{\pmb{x}\in\N^2}\pmb{x}\cdot\psi(\pmb{x},t)$. Wir wollen nun die Entwicklung von $\sigma_x^2$ über die Zeit $t$ unter der Startbedingung $\Phi\at{0}(0,0)$ untersuchen. In Abbildung \ref{fig_variance_time} sehen wir die Varianz $\sigma_x^2$ für verschiedene $\theta$, bei (a) mit einem konstanten $v_e=\frac{1}{\sqrt{2}}$ und bei (b) mit einem konstanten $v=1$.
+mit dem Erwartungswert $\mu_x=\sum_{\pmb{x}\in\N^2}\pmb{x}\cdot\psi(\pmb{x},t)$. Wir wollen nun die Entwicklung von $\sigma_x^2$ über die Zeit $t$ unter der Startbedingung $\Phi\at{0}(0,0)$ untersuchen. In Abbildung \ref{fig_variance_time} (siehe Anhang 3.2) sehen wir die Varianz $\sigma_x^2$ für verschiedene $\theta$, bei (a) mit einem konstanten $v_e=\frac{1}{\sqrt{2}}$ und bei (b) mit einem konstanten $v=1$.
 
-In beiden Fällen sehen wir, dass die Varianz über die Zeit linear ansteigt. Vielmehr stellen wir fest, dass die Steigung der Varianz von $\theta$ abhängt. Bei dem konstantem $v$ schwankt sie zwischen 0 und $\frac{1}{2}$; bei dem konstantem $v_e$ schwankt sie zwischen ca. $0,207$ und $\frac{1}{2}$. Die verschiedenen Steigungen in Abhängigkeit von $\theta$ sind auch noch mal deutlich in Abbildung \ref{fig_variance_angle} gegenübergestellt.
+In beiden Fällen sehen wir, dass die Varianz über die Zeit linear ansteigt. Vielmehr stellen wir fest, dass die Steigung der Varianz von $\theta$ abhängt. Bei dem konstantem $v$ schwankt sie zwischen 0 und $\frac{1}{2}$; bei dem konstantem $v_e$ schwankt sie zwischen ca. $0,207$ und $\frac{1}{2}$. Die verschiedenen Steigungen in Abhängigkeit von $\theta$ sind auch noch mal deutlich in Abbildung \ref{fig_variance_angle}  (siehe Anhang 3.2) gegenübergestellt.
 
-Die Varianz sollte sich optimalerweise unabhängig von $\theta$ entwickeln -- bestenfalls wäre die Kurve in Abbildung \ref{fig_variance_angle} also eine horizontale Gerade. Dies ist jedoch nicht der Fall. Durch die Einführung von $v_e$ anstelle von $v$ haben wir den Einfluss von $\theta$ auf die Änderungsrate von $\sigma_x^2$ bereits reduziert, was die Sinnvollkeit dieser Entscheidung nur erneut bestätigt. 
+Die Varianz sollte sich optimalerweise unabhängig von $\theta$ entwickeln -- bestenfalls wäre die Kurve in Abbildung \ref{fig_variance_angle} also eine horizontale Gerade. Dies ist jedoch nicht der Fall. Durch die Einführung von $v_e$ anstelle von $v$ haben wir den Einfluss von $\theta$ auf die Änderungsrate von $\sigma_x^2$ bereits reduziert, was die Sinnhaftigkeit dieser Entscheidung nur erneut bestätigt. 
 
 Dennoch wäre das Modell treffender, wenn $\theta$ auf die Entwicklung der Varianz keinen Einfluss hätte, da sich andernfalls in einer derartig konstruierten Welt ein zugrundeliegendes Koordinatensystem feststellen lassen würde, wie es in unserem Universum nicht der Fall ist.
 
